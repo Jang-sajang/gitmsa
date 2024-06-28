@@ -1,0 +1,68 @@
+/* 
+        div {
+            background-color: rgb(171, 201, 245);
+            width: 1000px;
+            height: 600px;
+        }
+    */
+
+header {
+    width: 100%;
+    /*  너비 */
+    height: 100px;
+    /* 높이 */
+    background-color: rgb(135, 250, 135);
+}
+
+
+#container {
+    width: 1100px;
+    /* height: 100px; */
+    background-color: #ddd;
+
+    /*북동남서*/
+    /* margin: 0 30px 200px 300px; /*북동남서*/
+    margin: 0 auto;
+    
+}
+a:visited{
+    color:#000;
+}
+a:hover{
+    color:rgb(49, 132, 255);
+}
+#bbb {
+    width: 1090px;
+    height: 700px;
+    background-color: #ddd;
+    margin: 5px auto;
+}
+
+#logo{
+    padding-left: 20px;
+    
+}
+a {
+    font-style: oblique;
+    text-decoration: none;
+}
+    .navi{
+        float: right;
+
+    }
+    li{
+        float:left;
+        list-style-type: none;
+        
+    }
+    li a{
+        display: block;
+        padding: 20px 60px;
+    }
+    section{
+        padding: 20px 60px;
+    }
+    footer{
+        height : 100px;
+        background-color: rgb(135, 250, 135);
+    }
