@@ -14,6 +14,7 @@ public class Ex01 {
 		System.out.println(b/a);
 		System.out.println(a%b);
 		System.out.println(a/c);
+		
 	}
 
 }
