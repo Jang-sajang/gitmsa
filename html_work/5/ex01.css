@@ -1,0 +1,11 @@
+li, h1{
+    list-style: none;
+    padding: 10px;
+}
+
+
+form{
+    border: 1px solid black;
+    width: 60%;
+}
+#user-name, #r-phone {margin-left: 16px;}
