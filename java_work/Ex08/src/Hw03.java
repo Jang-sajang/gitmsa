@@ -2,7 +2,7 @@ import java.awt.*;
 import java.util.Scanner;
 
 public class Hw03 {
-//미완성
+
     //필자가 좋아하는 것 중 하나가 금요일 저녁 퇴근길에 DVD나 만화책을 잔뜩 빌리고,
     //동네 슈퍼에 들러서 군것질거리를 사 가지고 집에 들어가는 것이다.
     //오늘은 금요일이다. 현재 필자의 주머니에는 5천 원이 있다.
@@ -16,12 +16,10 @@ public class Hw03 {
     public static void main(String[] args) {
         int money = 3500;
         //크림빵2개 새우깡 3개 콜라 1개 = 1000 2100 400 = 3500
-        Menu menu = new Menu();
 
         int creamBread = 500;
         int shrimp = 700;
         int cola = 400;
-        int num = 0;
 
         System.out.println("안녕하세요! 그린슈퍼에 오신것을 환영합니다~!" + '\n');
         System.out.println("==========메뉴==========");
@@ -31,28 +29,22 @@ public class Hw03 {
         System.out.println("==========메뉴==========");
         System.out.println(" 3500원 있습니다. 메뉴를 골라주세요! " + '\n');
 
-        System.out.println("크림빵 구매!  잔액은 =  "+(money-Buy(creamBread)) );
-        money = money - num;
-        System.out.println("크림빵 구매!  잔액은 =  "+(money-Buy(creamBread)) );
-        money = money - num;
-        System.out.println("새우깡 구매!  잔액은 =  "+(money-Buy(shrimp)) );
-        money = money - num;
-        System.out.println("새우깡 구매!  잔액은 =  "+(money-Buy(shrimp)) );
-        money = money - num;
-        System.out.println("새우깡 구매!  잔액은 =  "+(money-Buy(shrimp)) );
-        money = money - num;
-        System.out.println("콜라 구매!  잔액은 =  "+(money-Buy(cola)) );
-        money = money - num;
+        money = money - Buy(creamBread);
+        System.out.println("크림빵 구매!  잔액은 =  "+money );
+        money = money - Buy(creamBread);
+        System.out.println("크림빵 구매!  잔액은 =  "+money);
+        money = money - Buy(shrimp);
+        System.out.println("새우깡 구매!  잔액은 =  "+money);
+        money = money - Buy(shrimp);
+        System.out.println("새우깡 구매!  잔액은 =  "+money);
+        money = money - Buy(shrimp);
+        System.out.println("새우깡 구매!  잔액은 =  "+money);
+        money = money - Buy(cola);
+        System.out.println("콜라 구매!  잔액은 =  "+money);
 
     }
 
     public static int Buy(int num) {
         return num;
-    }
-
-    public static void Menu() {
-        int creamBread = 500;
-        int shrimp = 700;
-        int cola = 400;
     }
 }
