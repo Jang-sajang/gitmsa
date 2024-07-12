@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 300;
+
+}
+
+.container {
+    width: 960px;
+    min-width: 960px;
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+ul {
+    float: right;
+}
+
+li {
+    float: left;
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    display: block;
+    margin: 0.8rem 0.3rem;
+}
+
+.header {
+    overflow: hidden;
+}
+
+.logo {
+    float: left;
+    display: block;
+    padding: 0.3rem;
+    margin: 0.2rem;
+}
+
+.Sign {
+    background-color: gainsboro;
+    border-radius: 0.4rem;
+}
+
+.Register {
+    background-color: gainsboro;
+    border-radius: 0.4rem;
+}
+
+.slide>div {
+    height: 400px;
+    overflow: hidden;
+}
+
+.heading>h1,
+h2 {
+    padding-left: 2rem;
+}
+
+.prevent {
+    display: flex;
+    justify-content: center;
+    /* overflow: hidden */
+}
+.sub-heading{
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+.sub-heading > div{
+    width: 280px;
+    background-color: azure;
+}
