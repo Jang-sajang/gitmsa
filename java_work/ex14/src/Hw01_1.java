@@ -1,5 +1,5 @@
 //이제 제대로 입력 받아서 출력해보자
-
+// chars 배열로 바꾸자!
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -8,6 +8,7 @@ public class Hw01_1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] str = new String[]{sc.next()};
+
         System.out.println(Arrays.toString(str));
 
         System.out.print("확장자 ");
