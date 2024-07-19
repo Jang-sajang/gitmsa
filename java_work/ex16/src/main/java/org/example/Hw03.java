@@ -13,11 +13,10 @@ package org.example;
 import java.util.Arrays;
 
 public class Hw03 {
+    int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
 
     public static void main(String[] args) {
         //메인에서 필요한 배열 상속시키기
-
-
         ArrSwitch as = new ArrSwitch();
         as.arr3to1();
     }
@@ -25,10 +24,8 @@ public class Hw03 {
 
 class ArrSwitch extends Hw03{
     public void arr3to1(){
-        int[][] arr = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         System.out.println(Arrays.toString(arr[2]));
         System.out.println(Arrays.toString(arr[0]));
         System.out.println(Arrays.toString(arr[1]));
-
     }
 }

@@ -21,6 +21,7 @@ class Value {
     int[] arr = {40,-20,10,7,50,12};
     static int a;                    //💛이거 아닌것 같은 부분!💛 >> a와 비교하는데 a를 그냥 큰 수로 잡음
     static int b;            // 범위로 두면 이상하진 않을듯
+    // 답 : 위에 a 값에 a = arr[0]선언 해서 비교해주기!
 
     public static int minValue(int[] arr) {     //최소값을 출력한다! >> 어떻게할까? 배열을 받고 두수 비교해서 작은거 출력
         for (int i = 0; i < arr.length; i++) {
