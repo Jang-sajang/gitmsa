@@ -1,6 +1,6 @@
 //쌤이 풀어준 방법
 // split 함수를 쓴다!
-
+//정규표현식!
 import java.util.Arrays;
 
 public class Hw01_t {
