@@ -8,10 +8,15 @@ public class Ex06 {
 
     public static void main(String[] args) {
         try {  // DB연결 유지 클래스
-            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/aaa","root","1234");
+            Connection conn
+                    = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/aaa","root","1234");
             System.out.println("되냐");
 
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO student values('김길동', '100', '100', '100')");
+            // SQL 담은 객체
+            PreparedStatement pstmt
+                    = conn.prepareStatement("INSERT INTO student values('김길동', '100', '100', '100')");
+
+            pstmt.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
         }
