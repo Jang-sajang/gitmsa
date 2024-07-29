@@ -5,17 +5,18 @@ import java.util.Scanner;
 public class Work {
     public static void main(String[] args) {
     Solution so = new Solution();
-        System.out.println(so.solution());
+        System.out.println(so.solution("asdh"));
     }
 }
 
 class Solution {
+    int sum = 0;
     public int solution(String message) {
-            message.length(
+           sum = message.length()*2;
 
 
-            )
-        return answer;
+
+        return sum;
     }
 }
 

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span id="order">1</span>번째 참가자</div>
+    <div>제시어 : <span id="word"></span></div>
+    <input typ=""text">
+    <button>입력</button>
+    
+    <script>
+        const num = Number(prompt("참가자는 몇 명입니까?"));
+        // console.log(num);
+        // console.log(typeof(num));
+        const $input = document.querySelector('input');
+        const $button = document.querySelector('button');
+        const $order = document.querySelector('#order');
+        const $word = document.querySelector('#word');
+
+        let newWord; //현재 단어
+        let word; //제시어
+
+        // const onInput = (event) => {
+        //     newWord = event.target.value; //입력한 단어를 현재 단어로 저장
+        // }
+
+        // const onClickButton = () => {
+        //     //제시어가 없을 때 이므로, 첫 번째 참가자의 첫 번째 시도
+        //         if(!word || word.at(-1) === newWord[0]){
+        //             word = newWord;
+        //           $word.textContent = word;
+        //           const order = Number($order.textContent);
+        //           if(order +1 > num) $order.textContent = 1;
+        //                 else $order.textContent = order +1;
+
+        //         }
+
+        //         else {
+                   
+                    
+        //                 alert('틀린 단어입니다.')
+        //             }
+                
+        //               $input.value = "";
+        //                 $input.focus();
+        // }
+        // //첫번째 파라메터 = 이벤트 이름(누가input하면), 두째 = 콜백 함수명(온인풋불러서 실행시키기)
+        // $input.addEventListener('input', (event) => {
+        //     newWord = event.target.value; //입력한 단어를 현재 단어로 저장
+        // });
+
+
+
+       // $input.addEventListener('input', onInput); 위처럼 한번에 적을 수 있따!
+        //click 이벤트 발생 시 onclickbutton 함수 호출
+        $button.addEventListener('click',(event) => {
+            //제시어가 없을 때 이므로, 첫 번째 참가자의 첫 번째 시도
+                if(!word || word.at(-1) === newWord[0]){
+                    word = newWord;
+                  $word.textContent = word;
+                  const order = Number($order.textContent);
+                  if(order +1 > num) $order.textContent = 1;
+                        else $order.textContent = order +1;
+
+                }
+
+                else {
+                   
+                    
+                        alert('틀린 단어입니다.')
+                    }
+                
+                      $input.value = "";
+                        $input.focus();
+        });
+
+    </script>
+</body>
+</html>

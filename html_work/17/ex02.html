@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="userName">
+        어서오세요
+    </div>
+    <script>
+        const usrName = document.querySelector("#userName")
+        const userName = prompt("이름을 입력해주세요")
+        // var name = prompt("이름을 입력하세요.")
+        // document.write("<b><big>" + name + "<big></b>님, 환영합니다")
+            usrName.innerText = "어소오세요." + userName;
+
+            console.log(userName);
+    </script>
+</body>
+</html>

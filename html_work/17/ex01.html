@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">자바스크립트</h1>
+    <P id="text">위 텍스트를 클릭해보세요.</P>
+
+    <script>  /*이렇게 중간에 넣을수는 있는데 잘 쓰지는 않음*/
+    // var 는 variable 변수 라는 뜻. 데이터 타입을 정해주지않음. 
+    //나중에 undifined됨. 나는 int라 생각했는데 이상한거 드감
+        const heading = document.querySelector("#heading"); /* # = id 헤딩인걸 가져와라*/
+        // const clickText = document.querySelector("#text");
+        heading.onclick = () => {
+            heading.style.color = "white"
+        }
+
+          // for 잘 안쓰는데 혹시나 쓰면 let 써줌
+        //   alert("존재하지 않는 아이디");
+
+          const flagTF = false;
+
+        //   if(flagTF===true) alert("존재하지 않는 아이디입니다.");
+        //   else flagTF = true;
+
+        //   const reply = 
+        //   confirm("프로필 사진을 바꾸시겠?")
+        // prompt("이름을 입력하세요.","이름")
+        //   if(REPLY === True) alter("프로필이 변경됨")
+        //   else return;
+
+        let sign = prompt("당신의 별자리는 무엇입니까?");
+
+if (sign.toLowerCase() === "전갈자리") {
+  alert("와! 저도 전갈자리예요!");
+}
+
+// prompt 기능을 쓰는 방법은 다양합니다.
+sign = window.prompt(); // 빈 대화 상자를 엽니다.
+sign = prompt(); // 빈 대화 상자를 엽니다.
+sign = window.prompt("님 지금 기분 좋아요?"); // 안내 문구 "님 지금 기분 좋아요?"가 보이는 창을 띄웁니다.
+sign = window.prompt("님 지금 기분 좋아요?", "네."); // 안내 문구 "님 지금 기분 좋아요?"가 보이는 창을 띄우되 기본적으로 입력되어 있는 값은 "네."로 합니다.
+
+    </script>
+</body>
+</html>
