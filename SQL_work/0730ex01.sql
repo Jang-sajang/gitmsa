@@ -51,7 +51,7 @@ where name='박지성' and book.bookid=orders.bookid and customer.custid=orders.
 -- 7) 박지성이 구매하지 않은 도서의 이름 xxxx 안산거 어케함
 select name, bookname
 from book, customer, orders
-where name not in ('박지성') and book.bookid=orders.bookid and customer.custid=orders.custid;
+where name <> '박지성' and book.bookid=orders.bookid and customer.custid=orders.custid;
 
 -- 8) 마당서점 도서의 총개수
 select count(bookid) as 도서개수 from book;
@@ -86,3 +86,12 @@ where customer.custid=orders.custid;
 select name, bookname
 from book, customer, orders
 where book.bookid=orders.bookid and customer.custid=orders.custid;
+
+-- 가장 비싼 도서의 이름??
+select bookname from book
+where price = (select max(price) from book);
+
+-- 도서를 구매한 이력이 있는 고객명
+select name 
+from customer
+where custid in (select distinct custid from orders);
