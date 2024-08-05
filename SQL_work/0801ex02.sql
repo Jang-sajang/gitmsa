@@ -29,3 +29,57 @@ from emp;
 select count(empno) 사원수, sum(sal) 급여합계, avg(sal) 평균
 from emp
 where DEPTNO like 30;
+
+-- 8-02일 계속
+-- 9) 평균 급여가 가장 높은 부서의 번호를 출력하세요.
+select deptno
+			   from emp
+			   where sal > all(select avg(sal) from emp)
+;
+
+select deptno,avg(sal)
+			   from emp
+			   where sal > all(select avg(sal) from emp)
+;
+
+
+-- 10) 세일즈맨(SALESMAN)을 제외하고, 업무별 사원의 급여가 3,000 이상인 각 업무에 대해서, 
+-- 업무명과 업무별 평균 급여를 출력하세요. 단 평균 급여는 내림차순으로 출력합니다.
+select job, avg(sal)
+from emp
+group by avg(sal);
+
+-- 11) 전체 사원 가운데 직속상관이 있는 사원의 수를 출력하세요.
+select ename, mgr
+from emp
+where mgr is not null;
+-- 12) EMP테이블에서 이름, 급여, 커미션(COMM)금액, 총액(SAL+COMM)을 구하여 총액이 많은 순서대로 출력하세요. 단 커미션이 NULL인 사람은 제외합니다.
+select ename, sal, comm, sal+comm
+from emp
+where comm is not null
+order by sal+comm desc;
+
+-- 13) 부서별로 같은 업무를 하는 사람의 인원수를 구하여 부서번호, 업무이름, 인원수를 출력하세요.
+
+select (select count(job)
+from emp
+group by job), deptno, job
+from emp;
+
+-- 14) 사원이 한 명도 없는 부서의 이름을 출력하세요.
+select dname, ename
+from emp, dept
+where dname != (select dname from dept where emp.deptno=dept.deptno);
+
+select dname
+from emp, dept
+where emp.deptno=dept.deptno and (dname != emp.job);
+
+-- 15) 같은 업무를 하는 사람의 수가 4명 이상인 업무와 인원수를 출력하세요.
+-- 16) 사원번호가 7400이상 7600이하인 사원의 이름을 출력하세요.
+-- 17) 사원의 이름과 사원의 부서를 출력하세요.
+-- 18) 사원의 이름과 팀장(MGR)의 이름을 출력하세요.
+select ename,(select ename from emp where mgr=en.ename)
+from emp as en;
+-- 19) 사원 SCOTT보다 급여를 많이 받는 사람의 이름을 출력하세요.
+-- 20) 사원 SCOTT이 일하는 부서번호 혹은 DALLAS에 있는 부서번호를 출력하세요.
