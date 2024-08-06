@@ -21,7 +21,7 @@ create table Department(
 );
 -- 대학원생 / 아이디, 이름, 나이 ,학위과정
 create table Graduate(
-	   ssn varchar(20),
+	   ssn varchar(20) primary key,
        name varchar(20),
        age integer(3),
        deg_prog char(2),
@@ -33,16 +33,16 @@ create table Graduate(
 );
 -- 과제 / 과제번호, 지원기관, 개시일, 종료일, 예산액
 create table Project(
-	   pid varchar(10),
+	   pid varchar(10) primary key,
        sponsor varchar(10),
        start_date date,
        end_date date,
        budget INT(15),
        manager varchar(20),
-       foreign key (manager) references Professor(dno)
+       foreign key (manager) references Professor(ssn)
 );
 
-create table work_dept(
+create table work_dept(		-- 근무
 	   ssn varchar(20) not null,
        dno integer(5) not null,
        pct_time integer(3),
