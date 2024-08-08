@@ -24,4 +24,5 @@ create user mdguest2 identified by '1234';
 grant all privileges on madangdb.* to FINN@localhost;
 flush privileges;
 
+select * from madangdb.book;
 grant select on madangdb.book to mdguest@localhost;
