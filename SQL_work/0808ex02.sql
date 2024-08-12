@@ -19,3 +19,39 @@ where last_name like '_c%';
 select *
 from locations
 where length(street_address) in (select min(length(street_address)) from locations);
+
+-- 5. 이름이 'A','J', 'M'으로 시작하는 사원의 이름과 이름의 길이를 출력하세요.
+select concat(first_name,last_name), length(concat(first_name,last_name))
+from employees
+where substr(first_name,1,1) in ('A', 'J', 'M');
+
+-- - -- Date 타입 처리 문제
+-- 1. 1987년에 입사한 사원의 이름을 출력하세요.
+select * from job_history;
+
+select concat(E.first_name,E.last_name) as '사원의 이름', E.hire_date
+from employees E
+where hire_date like '1987%';
+
+-- 2. 사원의 이름, 입사년도, 근무년수를 출력하세요.
+select concat(E.first_name,E.last_name), hire_date, 2024-(substr(hire_date,1,4)) as 근무년수
+from employees E;
+
+select concat(E.first_name,E.last_name), hire_date, datediff(sysdate(),hire_date)/365 as 근무년수
+from employees E;
+
+-- 3. '1987-06-01'과 '1987-07-30'사이에 입사한 사원의 이름과 입사일을 출력하세요.
+select concat(E.first_name,E.last_name), hire_date
+from employees E
+where hire_date between '1987-06-01' and '1987-07-30'; 
+
+-- 4. 6월에 입사한 사원의 이름과 성을 출력하세요.
+select concat(E.last_name,E.first_name), hire_date
+from employees E
+where hire_date like '_____06%';				-- underBar 
+
+select concat(E.last_name,E.first_name), E.hire_date
+from employees E
+where date_format(hire_date,'%m')=06;
+
+-- 5. 부서별, 연도별 입사한 사원의 수를 구하세요.

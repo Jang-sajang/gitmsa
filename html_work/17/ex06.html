@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com">
+      tailwind.config = {
+          theme: {
+      container: {
+        padding: {
+          DEFAULT: '1rem',
+          sm: '20rem',
+          lg: '40rem',
+          xl: '50rem',
+          '2xl': '70rem',
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container md:mx-auto md:px-3 hover:bg-blue-200">
+      <h1>heading</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui autem
+        fugit nobis placeat. Soluta deleniti eligendi autem cumque consequatur
+        cum quo aliquid ut voluptate, voluptatum quas quaerat vero, ex
+        temporibus?
+      </p>
+    </div>
+
+    <h1 class="text-3xl font-bold underline text-clifford lg:text-center">
+      Hello world!
+    </h1>
+    <div class="flex text-5xl my-3 mx-3 gap-3">
+      <div class="flex bg-blue-600 w-1/4">01</div>
+      <div class="flex bg-slate-950 w-2/4">02</div>
+      <div class="flex bg-red-600 w-1/4">03</div>
+    </div>
+
+    <div>
+        <input type="checkbox" class="checked:bg-blue-500 ..." />
+    </div>
+
+    <form class="flex items-center space-x-6">
+        <div class="shrink-0">
+          <img class="h-16 w-16 object-cover rounded-full" src="../10/harin.jfif" alt="Current profile photo" />
+        </div>
+        <label class="block">
+          <span class="sr-only">Choose profile photo</span>
+          <input type="file" class="block w-full text-sm text-slate-500
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-violet-50 file:text-violet-700
+            hover:file:bg-violet-100
+          "/>
+        </label>
+      </form>
+
+  </body>
+</html>
