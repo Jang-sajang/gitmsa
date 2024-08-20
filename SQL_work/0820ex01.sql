@@ -1,0 +1,1 @@
+UPDATE member SET NAME='임예서',age=20 WHERE idx = 3;
