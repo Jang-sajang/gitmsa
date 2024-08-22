@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <section>
+        <h1 class="pt-10">입력값에 맞는 구구단이 나옵니다</h1>
+        <div class=" bg-gray-200 text-2xl border hover:bg-slate-300 text-center py-10">
+            <button>입력</button>
+        </div>
+        <div id="ggd" class="text-center pt-10">
+            <h1>여기</h1>
+        </div>
+    </section>
+
+    <script>
+        var ggd = document.getElementById('ggd');
+
+        ggd.onclick = function () {
+            for (var i = 2; i <= 9; i++) {
+                ggd = (i + 'x  = ' + i * 2);
+                console.log(ggd);
+            }
+        }
+
+        console.log(ggd);
+        // h1.innerHTML = ggd;
+    </script>
+</body>
+
+</html>

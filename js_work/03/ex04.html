@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+    <button id="aa" class="">요소추가</button>
+    <div id="print"></div>
+    <script>
+        var arr = "<div class='text-3xl bg-red-50 p-3'>태그추가</div>";
+        // var arr = [10, 20, 30];
+        var aa = document.getElementById('aa');
+        var print = document.getElementById('print');
+        aa.onclick = function () {
+            // arr.push(50);
+            print.innerHTML = print.innerHTML + arr;
+            // document.write(arr);
+        }
+        // document.write(arr); // 이렇게 하면 한번쓰고 재사용 안됨 버튼없어짐
+        print.innerHTML = arr;
+
+    </script>
+</body>
+
+</html>
