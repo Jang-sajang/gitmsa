@@ -4,36 +4,74 @@
 
 @charset "utf-8";
 
-a {text-decoration: none;}
-.inner_container {width: 100%; background-color: rgb(35, 53, 136); }
+a {
+  text-decoration: none;
+}
+
+.inner_container {
+
+  background-color: rgb(35, 53, 136);
+}
 
 /* 헤더 */
-header .logo {margin-top:30px; margin-left: 60px; display: inline-block;}
-header.inner_container{height: 900px; }
-header .header_menu ul li {display: inline-block; width: 130px; position: relative; line-height: 40px;}
-header ul li a {color:#ffffff;}
-header .header_menu {float: right;  margin-top:30px; }
-header .header_menu > li:nth-child(5) img{ margin-left: 2px; vertical-align: middle;}
-header .header_menu .bottom_menu {font-size: 16px; font-weight: 300; text-align: center; display: flex; align-items: center;}
-
-
-.header_menu > ul > li:hover > ul {
-  display:block;
+header .logo {
+  margin-top: 30px;
+  margin-left: 60px;
+  display: inline-block;
 }
-.header_menu > ul > li > ul {
-    width:100%;
-    position: absolute;
-    font-size:14px;
-    display: none;
-  }
 
- 
-.header_menu > ul > li > ul > li > a:hover {
+header.inner_container {
+  height: 900px;
+}
+
+header .header_menu ul li {
+  display: inline-block;
+  width: 130px;
+  position: relative;
+  line-height: 40px;
+}
+
+header ul li a {
+  color: #ffffff;
+}
+
+header .header_menu {
+  float: right;
+  margin-top: 30px;
+}
+
+header .header_menu>li:nth-child(5) img {
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+header .header_menu .bottom_menu {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+
+.header_menu>ul>li:hover>ul {
+  display: block;
+}
+
+.header_menu>ul>li>ul {
+
+  position: absolute;
+  font-size: 14px;
+  display: none;
+}
+
+
+.header_menu>ul>li>ul>li>a:hover {
   background: skyblue;
   transition: ease 1s;
   padding: 15px;
 
-  } 
+}
 
 /* Footer Styles */
 .footer_area {
@@ -111,14 +149,16 @@ header .header_menu .bottom_menu {font-size: 16px; font-weight: 300; text-align:
 .footer_section ul li a:hover {
   text-decoration: underline;
 }
-.mickey_icon{
+
+.mickey_icon {
   position: absolute;
   right: 1rem;
   top: 40%;
   width: 100px;
   height: auto;
 }
-.Dcastle{
+
+.Dcastle {
   position: absolute;
   left: 22rem;
   width: 200px;
