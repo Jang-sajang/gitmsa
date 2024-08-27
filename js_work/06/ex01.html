@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        //var 변수 재선언이 되고 전역변수로 선언하는건 옛날방식
+        //const 상수입니다. 객체랑 배열에서는 상수가 아니에요
+        //let 변수 선언 값의 변경이 가능해요
+
+        function doA() {
+            var a = 10;
+        }
+        var a = 11;
+        doA();
+        console.log(a);
+
+        let b = '안녕 하세요';
+        console.log(b);
+        // let b = 30; let은 재선언 안된다.
+        const c = 30;
+        // c = 40; // 안된다
+
+        const d = []; // 배열 함수 : unshift shift push pop
+        d.push(5); d.push(6); d.push(8); d.push(7);
+        console.log(d);
+
+        const e = {}; // new 키워드 없이도 이렇게 객체할당을 할 수 있다
+        e.a = 10;
+        console.log(e.a);
+        e.b = () => {
+            console.log('b함수 입니다.');
+        }
+        console.log(typeof e.a);
+        console.log(typeof e.b);
+
+        console.log(e.b);
+        e.b();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

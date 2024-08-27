@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/css/salepage.css" rel="stylesheet">
+  <link href="css/salepage.css" rel="stylesheet">
   <title>할인혜택</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -64,7 +64,7 @@
   </header>
 
   <!-- 본문 -->
-  <nav class="container mx-auto ">
+  <nav class=" flex justify-center max-md:container">
     <div class="mx-auto">
       <img src="images/1-6.jpg" alt="#">
       <p class="text-center font-mono pt-20">The Happiest Place on Earth</p>
@@ -74,116 +74,112 @@
   </nav>
 
   <section>
-    <!-- 빠른 예약 -->
-    <div class="flex font-sans">
-      <div class="flex-none w-48 relative">
-        <img src="images/벅스버니.png" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+    <!-- 달력 -->
+    <div class="bg-gray-100 flex items-center justify-center">
+
+      <div class="lg:w-7/12 md:w-9/12 sm:w-10/12 mx-auto p-4">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div class="flex items-center justify-between px-6 py-3 bg-gray-700">
+            <button id="prevMonth" class="text-white">Previous</button>
+            <h2 id="currentMonth" class="text-white"></h2>
+            <button id="nextMonth" class="text-white">Next</button>
+          </div>
+          <div class="grid grid-cols-7 gap-2 p-4" id="calendar">
+            <!-- Calendar Days Go Here -->
+          </div>
+          <div id="myModal" class="modal hidden fixed inset-0 flex items-center justify-center z-50">
+            <div class="modal-overlay absolute inset-0 bg-black opacity-50"></div>
+
+            <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+              <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                  <p class="text-2xl font-bold">Selected Date</p>
+                  <button id="closeModal"
+                    class="modal-close px-3 py-1 rounded-full bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring">✕</button>
+                </div>
+                <div id="modalDate" class="text-xl font-semibold"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <form class="flex-auto p-6">
-        <div class="flex flex-wrap">
-          <h1 class="flex-auto text-lg font-semibold text-slate-900">
-            빠른예약
-          </h1>
-          <div class="text-lg font-semibold text-slate-500">
-            $220.00
-          </div>
-          <div class="w-full flex-none text-sm font-medium text-slate-700 mt-2">
-            인원 수
-          </div>
-        </div>
-        <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
-          <div class="space-x-2 flex text-sm">
-            <label>
-              <input class="sr-only peer" name="size" type="radio" value="xs" checked />
-              <div
-                class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white">
-                1
-              </div>
-            </label>
-            <label>
-              <input class="sr-only peer" name="size" type="radio" value="s" />
-              <div
-                class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white">
-                2
-              </div>
-            </label>
-            <label>
-              <input class="sr-only peer" name="size" type="radio" value="m" />
-              <div
-                class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white">
-                3
-              </div>
-            </label>
-            <label>
-              <input class="sr-only peer" name="size" type="radio" value="l" />
-              <div
-                class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white">
-                4
-              </div>
-            </label>
-            <label>
-              <input class="sr-only peer" name="size" type="radio" value="xl" />
-              <div
-                class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white">
-                5
-              </div>
-            </label>
-          </div>
-        </div>
-        <div class="flex space-x-4 mb-6 text-sm font-medium">
-          <div class="flex-auto flex space-x-4">
-            <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" type="submit">
-              Buy now
-            </button>
-            <button class="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900" type="button">
-              Add to bag
-            </button>
-          </div>
-          <button
-            class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200"
-            type="button" aria-label="Like">
-            <svg width="20" height="20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-            </svg>
-          </button>
-        </div>
-        <p class="text-sm text-slate-700">
-          The Happiest Place on Earth
-        </p>
-      </form>
     </div>
 
-    <div class="grid grid-cols-4 justify-center py-16">
-      <div class="box-content w-64 h-60 mx-auto border-4 hover:shadow-sm">
-        <img src="images/Student_sale.jpg" alt="" class="h-44 w-64">
-        <p>학생 할인</p>
+    <div class="grid grid-cols-4 justify-center py-16 max-md:grid-cols-3">
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/Student_sale.jpg" alt="" class="h-44 w-64">
+          <p>학생 할인</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4  ">
-        <img src="images/soldier_sale.jfif" alt="" class="h-44 w-64">
-        <p>군인 할인</p>
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/soldier_sale.jfif" alt="" class="h-44 w-64">
+          <p>군인 할인</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 3</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 4</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 5</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 6</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 7</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 8</p>
+        </a>
       </div>
-      <div class="box-content w-64 h-60 mx-auto border-4">
-        box
+
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 9</p>
+        </a>
       </div>
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 10</p>
+        </a>
+      </div>
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 11</p>
+        </a>
+      </div>
+      <div class="box-content my-2 w-64 h-60 mx-auto border-4 text-center hover:px-1">
+        <a href="#">
+          <img src="images/img_sale.webp" alt="#" class="h-44 w-64">
+          <p>할인 항목 12</p>
+        </a>
+      </div>
+
     </div>
 
   </section>
@@ -243,7 +239,115 @@
     </div>
   </footer>
 
+  <script>
+    // 달력 JS
+    // Function to generate the calendar for a specific month and year
+    function generateCalendar(year, month) {
+      const calendarElement = document.getElementById('calendar');
+      const currentMonthElement = document.getElementById('currentMonth');
 
+      // Create a date object for the first day of the specified month
+      const firstDayOfMonth = new Date(year, month, 1);
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Clear the calendar
+      calendarElement.innerHTML = '';
+
+      // Set the current month text
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      currentMonthElement.innerText = `${monthNames[month]} ${year}`;
+
+      // Calculate the day of the week for the first day of the month (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
+      const firstDayOfWeek = firstDayOfMonth.getDay();
+
+      // Create headers for the days of the week
+      const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      daysOfWeek.forEach(day => {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'text-center font-semibold';
+        dayElement.innerText = day;
+        calendarElement.appendChild(dayElement);
+      });
+
+      // Create empty boxes for days before the first day of the month
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        const emptyDayElement = document.createElement('div');
+        calendarElement.appendChild(emptyDayElement);
+      }
+
+      // Create boxes for each day of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = 'text-center py-2 border cursor-pointer';
+        dayElement.innerText = day;
+
+        // Check if this date is the current date
+        const currentDate = new Date();
+        if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
+          dayElement.classList.add('bg-blue-500', 'text-white'); // Add classes for the indicator
+        }
+
+        calendarElement.appendChild(dayElement);
+      }
+    }
+
+    // Initialize the calendar with the current month and year
+    const currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+    let currentMonth = currentDate.getMonth();
+    generateCalendar(currentYear, currentMonth);
+
+    // Event listeners for previous and next month buttons
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      generateCalendar(currentYear, currentMonth);
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      generateCalendar(currentYear, currentMonth);
+    });
+
+    // Function to show the modal with the selected date
+    function showModal(selectedDate) {
+      const modal = document.getElementById('myModal');
+      const modalDateElement = document.getElementById('modalDate');
+      modalDateElement.innerText = selectedDate;
+      modal.classList.remove('hidden');
+    }
+
+    // Function to hide the modal
+    function hideModal() {
+      const modal = document.getElementById('myModal');
+      modal.classList.add('hidden');
+    }
+
+    // Event listener for date click events
+    const dayElements = document.querySelectorAll('.cursor-pointer');
+    dayElements.forEach(dayElement => {
+      dayElement.addEventListener('click', () => {
+        const day = parseInt(dayElement.innerText);
+        const selectedDate = new Date(currentYear, currentMonth, day);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = selectedDate.toLocaleDateString(undefined, options);
+        showModal(formattedDate);
+      });
+    });
+
+    // Event listener for closing the modal
+    document.getElementById('closeModal').addEventListener('click', () => {
+      hideModal();
+    });
+
+  </script>
 </body>
 
 </html>
