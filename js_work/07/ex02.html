@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1.var 2.let 3.const 4.예약어없이선언
+        function doA() {
+            var k = 20;
+            console.log('k=' + k);
+            a = 10; //전역 함수(중괄호 밖에서도 사용가능)
+            b = 20;
+            let c = 30; //doA내에서마 사용 가능
+            var k = 30;
+            console.log('k=' + k);
+        }
+        doA();
+        console.log(a);
+        console.log(b);
+        console.log(c);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
