@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    이름 : <input type="text" name="" id="name">
+    나이 : <input type="text" name="" id="age">
+    <button id="btn">전송</button>
+</body>
+<script>
+    const name = document.getElementById('name');
+    const age = document.getElementById('age');
+
+    document.getElementById('btn').addEventListener('click', () => {
+        //서버에 전송하는 함수 fetch()
+        fetch(`http://127.0.0.1:8080/member/insert?name=${name.value}&age=${age.value}`)
+            .then(res => {
+                return res.text();
+
+            })
+
+            .then(data => {
+                console.log(data);
+            })
+    })
+</script>
+
+</html>
