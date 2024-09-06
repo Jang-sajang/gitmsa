@@ -1,5 +1,7 @@
 package com.example.ex01.member;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,14 +9,14 @@ import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class MemberRepository {
 
     public void select(){
         List<Member> list = new ArrayList<>();
         try( Connection conn
                      = DriverManager.getConnection(
-                "jdbc:mysql://192.168.0.29:3307/pmh","root","1234") ){
+                "jdbc:mysql://localhost:3307/aaa","root","1234") ){
             PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM member ORDER BY IDX DESC");
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
