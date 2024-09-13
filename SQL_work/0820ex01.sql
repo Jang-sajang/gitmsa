@@ -1,1 +1,1 @@
-UPDATE member SET NAME='임예서',age=20 WHERE idx = 3;
+jwhUPDATE member SET NAME='임예서',age=20 WHERE idx = 3;
