@@ -5,12 +5,27 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
 
-    <div class="wrapper">
+    <div class="p-5 bg-slate-500 text-white text-3xl">
 
-      <nav>
+      <nav class="flex space-x-5">
+        <div>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/TheFreeBoard">FreeBoard</RouterLink>
-        <RouterLink to="/TheUser">User</RouterLink>
+        </div>
+        <div>
+        <RouterLink to="/User">User</RouterLink>
+        </div>
+        <div class="group relative">
+                  <RouterLink to="/FreeBoardList">FreeBoardList</RouterLink>
+            <div class="hidden group-hover:block absolute bg-slate-600 rounded p-5">
+              <div>
+        <RouterLink to="/FreeBoardList">FreeBoardList</RouterLink>
+        </div>
+        <div>
+        <RouterLink to="/FreeBoardInput">FreeBoardInput</RouterLink>
+        </div>
+          </div>
+        </div>
+        
 
       </nav>
     </div>
