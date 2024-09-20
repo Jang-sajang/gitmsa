@@ -2,7 +2,6 @@
   <div>
     <h1 class="h1-red">TheFreeBoard</h1>
     <div class="p-5">
-      title = {{ title }} contet = {{ content }}
       <input
         type="text"
         v-model="title"
@@ -28,18 +27,38 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const title = ref('')
 const content = ref('')
 
 const router = useRouter()
+const route = useRoute();
+console.log(route.query.idx);
 
 const save = () => {
   const data = {
     title: title.value,
     content: content.value
   }
+
+// const getFreeBoard = () => {
+//     axios.get(`http://localhost:8080/freeboard/view/${route.params.idx}`)
+//         .then(res => {
+//             title.value = res.data.title;
+//             content.value = res.data.content;
+//             regDate.value = res.data.regDate;
+//             creAuthor.value = res.data.creAuthor;
+//             idx.value = res.data.idx;
+            
+//         })
+//         .catch(e => {
+//             console.log(e);
+//             alert(e.response.data.message);
+//             router.pusg({name:"freeboardlist"})
+//         })
+// }
+
   // console.log(data);
   axios
     .post('http://localhost:8080/freeboard', data)
