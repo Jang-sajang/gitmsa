@@ -5,8 +5,7 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode {
     // ctrl + shift + x 번역 단축키
     DUPLICATE_USERS(HttpStatus.BAD_REQUEST,"EMAIL 중복입니다."),
-    NOT_FOUND(HttpStatus.BAD_REQUEST,"해당되는 게시물이 없습니다"),
-
+    NOT_FOUND(HttpStatus.BAD_REQUEST,"해당되는 게시물이 없습니다."),
     ;
 
     private HttpStatus httpStatus;

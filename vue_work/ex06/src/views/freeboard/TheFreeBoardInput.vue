@@ -61,7 +61,7 @@ const save = () => {
 
   // console.log(data);
   axios
-    .post('http://localhost:8080/freeboard', data)
+    .post('http://localhost:10000/freeboard', data)
     .then((res) => {
       console.log(res)
       alert('저장하였습니다.')

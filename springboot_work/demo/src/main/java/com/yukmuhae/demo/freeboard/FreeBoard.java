@@ -18,12 +18,16 @@ public class FreeBoard {
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    private String f_title;
 
-    private String content;
+    private String f_body;  //
 
-    private LocalDateTime regDate;
+    private String f_nickname;
 
+    private String f_password;
 
+    private LocalDateTime f_timestamp; // regDate
+
+    private int f_avail;    // 논리적 삭제 1/0
 
 }

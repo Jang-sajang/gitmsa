@@ -22,6 +22,10 @@ import { RouterLink, RouterView } from 'vue-router'
               <RouterLink to="/FreeBoardInput">FreeBoardInput</RouterLink>
             </div>
           </div>
+          <RouterLink to="/FreeBoardList">FreeBoardList</RouterLink>
+        </div>
+        <div>
+          <RouterLink to="/fileupload">fileupload</RouterLink>
         </div>
       </nav>
     </div>

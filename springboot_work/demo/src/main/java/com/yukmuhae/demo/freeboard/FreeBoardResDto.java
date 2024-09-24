@@ -12,7 +12,15 @@ public class FreeBoardResDto {
     @JsonIgnore
     private Long F_idx;
 
-    private String title;
-    private String content;
-    private LocalDateTime regDate;
+    private String f_title;
+
+    private String f_body;  //
+
+    private String f_nickname;
+
+    private String f_password;
+
+    private LocalDateTime f_timestamp; // regDate
+
+    private int f_avail;    // 논리적 삭제 1/0
 }

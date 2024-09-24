@@ -1,4 +1,4 @@
-package com.pmh.ex10.freeboard;
+package com.yukmuhae.demo.freeboard;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
@@ -7,19 +7,16 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FreeBoardResponsePageDto {
+public class FreeBoardResPageDto {
 
-//    @Schema(hidden = true)  // swagger 문서에서 안보여지게..
     @JsonIgnore
-    private List<FreeBoard> content;
+    private List<FreeBoard> content; //content?? f_body??
 
-    private List<FreeBoardResponseDto> list;
+    private List<FreeBoardResDto> list;
     private int totalElements;
     private int totalPages;
     private int size;
-
 }

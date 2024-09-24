@@ -2,7 +2,10 @@ package com.yukmuhae.demo.freeboard;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.query.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,25 +16,31 @@ import java.util.List;
 @RestController
 @RequestMapping("freeboard")
 @RequiredArgsConstructor
+@CrossOrigin
+@Slf4j
 public class FreeBoardController {
 
     private final FreeBoardRepository freeBoardRepository;
 
     @GetMapping
     // http://localhost:8080/freeboard?pageNum=1
-    private ResponseEntity<List<FreeBoardResDto>> selectAll(@RequestParam(name = "pageNum") int pageNum ){
+    private ResponseEntity<List<FreeBoardResDto>> selectAll(@RequestParam(name = "pageNum", defaultValue = "0") int pageNum
+                                                            ,@RequestParam(name = "size", defaultValue = "5") int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(pageNum, size, sort);
 
-        return ResponseEntity.ok("")
+        //Page list
+        Page<FreeBoard> page = freeBoardRepository.findAll(pageable);
     }
-    @GetMapping
-    게시글 1개 조회
 
     @PostMapping("insert")
     public ResponseEntity<String> insert(@Valid @RequestBody FreeBoardReqDto freeBoardReqDto) {
         FreeBoard freeBoard = new FreeBoard();
-        freeBoard.setTitle(freeBoardReqDto.getTitle());
-        freeBoard.setContent(freeBoard.getContent());
-        freeBoard.setRegDate(LocalDateTime.now());
+        freeBoard.setF_title(freeBoardReqDto.getF_title());
+        freeBoard.setF_body(freeBoard.getF_body());
+        freeBoard.setF_password(freeBoard.getF_password());
+        freeBoard.setF_timestamp(LocalDateTime.now());
+
         freeBoardRepository.save(freeBoard); // 연속성
 
 

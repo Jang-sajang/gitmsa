@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 @EnableJpaAuditing
 public class Ex10Application {
@@ -16,8 +18,8 @@ public class Ex10Application {
 		ApplicationContext applicationContext
 				= SpringApplication.run(Ex10Application.class, args);
 
-//		Arrays.stream(applicationContext.getBeanDefinitionNames())
-//				.forEach(System.out::println);
+		Arrays.stream(applicationContext.getBeanDefinitionNames())
+				.forEach(System.out::println);
 	}
 
 	@Bean

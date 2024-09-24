@@ -38,7 +38,7 @@ public class FreeBoardController {
 
     @GetMapping
     public ResponseEntity<FreeBoardResponsePageDto> findALl(@RequestParam(name = "pageNum", defaultValue = "0") int pageNum
-            , @RequestParam(name = "size", defaultValue = "5") int size) {
+                                                            , @RequestParam(name = "size", defaultValue = "5") int size) {
         // select * from freeboard oder by idx desc, name desc,
         Sort sort = Sort.by(Sort.Direction.DESC, "idx");
 

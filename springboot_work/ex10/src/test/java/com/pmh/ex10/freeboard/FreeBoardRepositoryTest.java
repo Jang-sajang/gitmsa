@@ -24,7 +24,7 @@ class FreeBoardRepositoryTest {
     // 1. UserRepository
     // 2. Cascade JPA 속성
 
-    //    TransientPropertyValueException
+//    TransientPropertyValueException
     @Test
 //    @Transactional
     void insertTest() {

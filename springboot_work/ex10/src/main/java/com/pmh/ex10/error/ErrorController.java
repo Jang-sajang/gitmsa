@@ -31,8 +31,6 @@ public class ErrorController {
         String msg = (String) Arrays.stream(e.getDetailMessageArguments())
                         .reduce("",(s, s2) -> s.toString()+s2.toString());
 
-
-
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .httpStatus(HttpStatus.BAD_REQUEST)
                 .message( msg )
@@ -45,20 +43,19 @@ public class ErrorController {
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<ErrorResponse> constraintException(ConstraintViolationException e) {
+    public ResponseEntity<ErrorResponse> constraintException(ConstraintViolationException e){
 
+        // Stream
         String msg = e.getConstraintViolations()
                 .stream()
                 .map(constraintViolation -> constraintViolation.getMessage())
                 .reduce("",(s, s2) -> s+s2);
-//        String msg = (String) Arrays.stream()
-//                .reduce("",(s, s2) -> s.toString()+s2.toString());
 
-        // 위에는 stream으로 출력  / 밑에는 향상된 for 구문으로 출력하는 방법이다
+        // 향상된 for구문
         /*
         Set<ConstraintViolation<?>> set = e.getConstraintViolations();
         String test = "";
-        for (ConstraintViolation<?> item : set){
+        for( ConstraintViolation<?> item : set){
             System.out.println(item);
             System.out.println(item.getMessage());
             test = item.getMessage();
@@ -75,7 +72,6 @@ public class ErrorController {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(errorResponse);
-
     }
 
 
