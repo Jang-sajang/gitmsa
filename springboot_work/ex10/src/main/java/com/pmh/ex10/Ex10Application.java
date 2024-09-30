@@ -18,8 +18,9 @@ public class Ex10Application {
 		ApplicationContext applicationContext
 				= SpringApplication.run(Ex10Application.class, args);
 
-		Arrays.stream(applicationContext.getBeanDefinitionNames())
-				.forEach(System.out::println);
+//		Arrays.stream(applicationContext.getBeanDefinitionNames())
+//				.forEach(System.out::println);
+
 	}
 
 	@Bean

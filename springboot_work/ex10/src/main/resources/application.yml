@@ -4,14 +4,13 @@ server:
 spring:
   application:
     name: ex10
-  # sql 구문 실행해라
   sql:
     init:
       mode: always
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:10000/jwh
+    url: jdbc:mariadb://192.168.0.94:3306/jwh
     username: root
     password: 1234
 
@@ -22,7 +21,6 @@ spring:
       hibernate.format_sql: true
     show-sql: true
     open-in-view: false
-    # 스프링부트 시작 한 후에 data.sql 에 있는 insert 구문 실행해라
     defer-datasource-initialization: true
 
   servlet:
@@ -30,7 +28,6 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
       file-size-threshold: 0
-
+      enabled: true
 my:
   value: "welcome to my value"
-

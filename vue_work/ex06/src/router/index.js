@@ -1,38 +1,42 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import TheHome from '../views/TheHome.vue'
-import TheFreeBoardInput from '../views/freeboard/TheFreeBoardInput.vue'
-import TheFreeBoardList from '../views/freeboard/TheFreeBoardList.vue'
-import TheUser from '../views/TheUser.vue'
-import TheFreeBoardView from '@/views/freeboard/TheFreeBoardView.vue'
-import TheFreeBoardUpdate from '@/views/freeboard/TheFreeBoardUpdate.vue'
-import TheFileUpload from '@/views/freeboard/TheFileUpload.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import TheHome from '@/views/TheHome.vue';
+import TheUserList from '@/views/users/TheUserList.vue';
+
+import TheFreeBoardInput from '@/views/freeboard/TheFreeBoardInput.vue';
+import TheFreeBoardList from '@/views/freeboard/TheFreeBoardList.vue';
+import TheFreeBoardView from '@/views/freeboard/TheFreeBoardView.vue';
+import TheFreeBoardUpdate from '@/views/freeboard/TheFreeBoardUpdate.vue';
+
+import TheFileUpload from '@/views/TheFileUpload.vue';
+import TheFileUploads from '@/views/TheFileUploads.vue';
+import TheFileDownload from '@/views/TheFileDownload.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: TheHome
     },
     {
-      path: '/FreeBoardInput',
-      name: 'FreeBoardInput',
+      path: '/user',
+      name: 'user',
+      component: TheUserList
+    },
+    {
+      path: '/freeboardinput',
+      name: 'freeboardinput',
       component: TheFreeBoardInput
     },
     {
-      path: '/FreeBoardupdate',
-      name: 'FreeBoardupdate',
+      path: '/freeboardupdate',
+      name: 'freeboardupdate',
       component: TheFreeBoardUpdate
     },
     {
-      path: '/User',
-      name: 'User',
-      component: TheUser
-    },
-    {
-      path: '/FreeBoardList',
-      name: 'FreeBoardList',
+      path: '/freeboardlist',
+      name: 'freeboardlist',
       component: TheFreeBoardList
     },
     {
@@ -44,14 +48,18 @@ const router = createRouter({
       path: '/fileupload',
       name: 'fileupload',
       component: TheFileUpload
+    },
+    {
+      path: '/fileuploads',
+      name: 'fileuploads',
+      component: TheFileUploads
+    },
+    {
+      path: '/filedownload',
+      name: 'filedownload',
+      component: TheFileDownload
     }
-    // ,
-    // {
-    //   path: '/FreeBoardList/:aa/:bb',
-    //   name: 'FreeBoardList',
-    //   component: TheFreeBoardList
-    // }
   ]
-})
+});
 
-export default router
+export default router;

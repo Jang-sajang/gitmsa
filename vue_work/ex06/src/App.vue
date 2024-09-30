@@ -10,22 +10,33 @@ import { RouterLink, RouterView } from 'vue-router'
           <RouterLink to="/">Home</RouterLink>
         </div>
         <div>
-          <RouterLink to="/User">User</RouterLink>
+          <RouterLink to="/user">User</RouterLink>
         </div>
         <div class="group relative">
-          <RouterLink to="/FreeBoardList">FreeBoardList</RouterLink>
-          <div class="hidden group-hover:block absolute bg-slate-600 rounded p-5">
+          <RouterLink to="/freeboardlist">FreeBoard</RouterLink>
+          <div class="opacity-0 
+                    group-hover:opacity-100 
+                    transition absolute 
+                    bg-slate-500 
+                    p-5 top-8
+                    -left-5
+                    rounded">
             <div>
-              <RouterLink to="/FreeBoardList">FreeBoardList</RouterLink>
+              <RouterLink to="/freeboardlist">FreeBoardList</RouterLink>
             </div>
             <div>
-              <RouterLink to="/FreeBoardInput">FreeBoardInput</RouterLink>
+              <RouterLink to="/freeboardinput">FreeBoardinput</RouterLink>
             </div>
           </div>
-          <RouterLink to="/FreeBoardList">FreeBoardList</RouterLink>
         </div>
         <div>
           <RouterLink to="/fileupload">fileupload</RouterLink>
+        </div>
+        <div>
+          <RouterLink to="/fileuploads">fileuploads</RouterLink>
+        </div>
+        <div>
+          <RouterLink to="/filedownload">filedownload</RouterLink>
         </div>
       </nav>
     </div>
