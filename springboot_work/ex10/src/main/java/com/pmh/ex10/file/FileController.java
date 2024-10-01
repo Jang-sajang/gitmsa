@@ -52,7 +52,7 @@ public class FileController {
             @RequestPart(name = "file") MultipartFile file,
             @RequestPart(name = "fileDto") FileReqDto fileReqDto) {
         try {
-            String myFilePath = imagePath.toAbsolutePath() + "\\" + file.getOriginalFilename();
+            String myFilePath = imagePath.toAbsolutePath() + File.pathSeparator + file.getOriginalFilename();
 
             File saveFile = new File(myFilePath);
             file.transferTo(saveFile);

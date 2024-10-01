@@ -15,7 +15,7 @@
         <tbody>
           <!-- && <- 앞에꺼 true 이면 뒤에꺼 확인해봅니다. -->
           <!-- || <- 앞에꺼 false 이면 뒤에꺼 확인해봅니다. -->
-          <template v-if="arr && arr.length>0">
+          <template v-if="arr && arr.length > 0">
             <tr
               v-for="item in arr"
               :key="item.idx"
@@ -29,7 +29,12 @@
               <td class="border text-center text-lg p-1">{{ item.viewCount }}</td>
               <template v-if="item.list[0]">
                 <td class="border text-center text-lg p-1">
-                  <img :src="`http://localhost:10000/file/download/${item.list[0].name}`" alt="" srcset="" width="150">
+                  <img
+                    :src="`${GLOBAL_URL}/file/download/${item.list[0].name}`"
+                    alt=""
+                    srcset=""
+                    width="150"
+                  />
                 </td>
               </template>
             </tr>
@@ -60,21 +65,26 @@
 </template>
 
 <script setup>
-import axios from 'axios';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
+import { GLOBAL_URL } from '@/api/util';
+import { getFreeBoard } from '@/api/freeboardApi';
 
 const temp = ref(null);
-const changeTemp = ()=>{ temp.value = !temp.value }
+const changeTemp = () => {
+  temp.value = !temp.value;
+};
 
 const router = useRouter();
 const arr = ref([]);
 const totalPages = ref(10);
 const pageNum = ref(0);
 
-const setPageNum = (num) => {
+const setPageNum = async (num) => {
   pageNum.value = num;
-  getFreeBoard(num);
+  const res = await getFreeBoard(num);
+  arr.value = res.data.list;
+  totalPages.value = res.data.totalPages;
 };
 
 const viewPage = (idx) => {
@@ -82,22 +92,11 @@ const viewPage = (idx) => {
   router.push(data);
 };
 
-const getFreeBoard = (pageNum) => {
-  if (pageNum == undefined) pageNum = 0;
-  axios
-    .get(`http://localhost:10000/freeboard?pageNum=${pageNum}`)
-    .then((res) => {
-      arr.value = res.data.list;
-      totalPages.value = res.data.totalPages;
-      
-      console.log(arr.value);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-};
-// page 호출되자 마자 자동실행
-getFreeBoard();
+watchEffect(async () => {
+  const res = await getFreeBoard();
+  arr.value = res.data.list;
+  totalPages.value = res.data.totalPages;
+});
 </script>
 
 <style scoped></style>

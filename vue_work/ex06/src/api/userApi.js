@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { GLOBAL_URL } from './util.js';
 
-const URL = 'http://localhost:10000/user';
+const URL = `${GLOBAL_URL}/user`;
 
 export const getUsers = async () => {
   try {
@@ -12,10 +13,10 @@ export const getUsers = async () => {
   }
 };
 export const saveUser = async (item) => {
-  try{
-    const res = await axios.put(`${URL}/update`,item);
+  try {
+    const res = await axios.put(`${URL}/update`, item);
     return res;
-  }catch(e){
+  } catch (e) {
     console.log(e);
     return e;
   }
