@@ -4,6 +4,8 @@ import com.pmh.ex10.error.BizException;
 import com.pmh.ex10.error.ErrorCode;
 import com.pmh.ex10.file.FileEntity;
 import com.pmh.ex10.file.FileRepository;
+import com.pmh.ex10.user.User;
+import com.pmh.ex10.user.UserRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +25,7 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -33,6 +37,8 @@ public class FreeBoardController {
 
     private final FreeBoardRepository freeBoardRepository;
     private final FileRepository fileRepository;
+    private final UserRepository userRepository;
+
     private final ModelMapper modelMapper;
 
     @Value("${my.value}")
@@ -44,7 +50,8 @@ public class FreeBoardController {
     }
 
     @GetMapping
-    public ResponseEntity<FreeBoardResponsePageDto> findALl(@RequestParam(name = "pageNum", defaultValue = "0") int pageNum
+    public ResponseEntity<FreeBoardResponsePageDto> findALl(
+            @RequestParam(name = "pageNum", defaultValue = "0") int pageNum
             , @RequestParam(name = "size", defaultValue = "5") int size) {
 
         Sort sort = Sort.by(Sort.Direction.DESC, "idx");
@@ -58,20 +65,17 @@ public class FreeBoardController {
                 .stream()
                 .map(freeBoard -> {
                     FreeBoardResponseDto freeBoardResponseDto = modelMapper.map(freeBoard, FreeBoardResponseDto.class);
+
                     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm");
                     freeBoardResponseDto.setRegDate(dateTimeFormatter.format(freeBoard.getRegDate()));
                     freeBoardResponseDto.setModDate(dateTimeFormatter.format(freeBoard.getModDate()));
+
+                    freeBoardResponseDto.setCreAuthor(freeBoard.getUser().getName());
+                    freeBoardResponseDto.setModAuthor(freeBoard.getUser().getName());
+                    freeBoardResponseDto.setUserIdx(freeBoard.getUser().getIdx());
+
                     return freeBoardResponseDto;
                 }).toList();
-
-//        for (FreeBoard freeBoard : freeBoardResponsePageDto.getContent()) {
-//            FreeBoardResponseDto freeBoardResponseDto
-//                    = new ModelMapper().map(freeBoard, FreeBoardResponseDto.class);
-//            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yy/MM/dd hh:mm");
-//            freeBoardResponseDto.setRegDate(dateTimeFormatter.format(freeBoard.getRegDate()));
-//            freeBoardResponseDto.setModDate(dateTimeFormatter.format(freeBoard.getModDate()));
-//            list.add(freeBoardResponseDto);
-//        }
 
         freeBoardResponsePageDto.setList(list);
         return ResponseEntity.ok(freeBoardResponsePageDto);
@@ -90,6 +94,10 @@ public class FreeBoardController {
         freeBoardResponseDto.setRegDate(dateTimeFormatter.format(freeBoard.getRegDate()));
         freeBoardResponseDto.setModDate(dateTimeFormatter.format(freeBoard.getModDate()));
 
+        freeBoardResponseDto.setCreAuthor(freeBoard.getUser().getName());
+        freeBoardResponseDto.setModAuthor(freeBoard.getUser().getName());
+        freeBoardResponseDto.setUserIdx(freeBoard.getUser().getIdx());
+
         return ResponseEntity.ok(freeBoardResponseDto);
     }
 
@@ -97,12 +105,24 @@ public class FreeBoardController {
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
+//    @Transactional
     public ResponseEntity<FreeBoard> save(
             @Valid @RequestPart(name = "data") FreeBoardReqDto freeBoardReqDto,
             @RequestPart(name = "file", required = false) MultipartFile file) {
 
         FreeBoard freeBoard = new ModelMapper().map(freeBoardReqDto, FreeBoard.class);
-        freeBoardRepository.save(freeBoard);
+
+        if(freeBoardReqDto.getIdx()==null) {
+            freeBoardRepository.save(freeBoard);
+        }
+        else{
+            FreeBoard dbFreeBoard = freeBoardRepository.findById(freeBoard.getIdx()).orElseThrow();
+            dbFreeBoard = new ModelMapper().map(freeBoardReqDto, FreeBoard.class);
+            freeBoardRepository.save(dbFreeBoard);
+        }
+
+        User user = userRepository.findById(1L).orElse(null);
+        freeBoard.setUser(user);
 
         if (file != null) {
             String myFilePath = Paths.get("images/file/").toAbsolutePath() + File.separator + file.getOriginalFilename();
@@ -118,6 +138,14 @@ public class FreeBoardController {
             fileEntity.setPath(Paths.get("images/file/").toAbsolutePath().toString());
             fileEntity.setFreeBoard(freeBoard);
             fileRepository.save(fileEntity);
+            freeBoard.setList(Arrays.asList(fileEntity));
+            freeBoardRepository.save(freeBoard);
+        }else{
+            List<FileEntity> list = fileRepository.findByFreeBoardIdx(freeBoard.getIdx());
+            list.forEach(fileEntity -> {
+                fileRepository.deleteById(fileEntity.getIdx());
+            });
+            freeBoardRepository.save(freeBoard);
         }
 
         return ResponseEntity.status(200).body(freeBoard);
