@@ -32,16 +32,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void update(UserReqDto userReqDto) {
-        User user = modelMapper.map(userReqDto, User.class);
-        System.out.println("user = "+ user);
 
         User dbUser = userRepository.findById(
-                user.getIdx()).orElseThrow(() -> { throw new BizException(ErrorCode.NOT_FOUND); } );
+                userReqDto.getIdx()).orElseThrow(() -> { throw new BizException(ErrorCode.NOT_FOUND); } );
 
-        user.setWdate(dbUser.getWdate());
-//        user.setEmail(dbUser.getEmail());
-//        user.setPassword(dbUser.getPassword());
+        dbUser.setName(userReqDto.getName());
 
-        userRepository.save(user);
+        userRepository.save(dbUser);
     }
 }

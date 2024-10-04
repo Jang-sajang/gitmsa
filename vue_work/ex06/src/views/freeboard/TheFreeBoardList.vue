@@ -5,11 +5,12 @@
       <table class="border border-b-gray-500 w-full">
         <thead>
           <tr>
-            <th class="border">IDX</th>
-            <th class="border">title</th>
-            <th class="border">author</th>
-            <th class="border">regdate</th>
-            <th class="border">viewcount</th>
+            <th class="border text-center text-lg p-2">IDX</th>
+            <th class="border text-center text-lg p-2">title</th>
+            <th class="border text-center text-lg p-2">author</th>
+            <th class="border text-center text-lg p-2">regdate</th>
+            <th class="border text-center text-lg p-2">viewcount</th>
+            <th class="border text-center text-lg p-2">img</th>
           </tr>
         </thead>
         <tbody>
@@ -27,8 +28,9 @@
               <td class="border text-center text-lg p-1">{{ item.creAuthor }}</td>
               <td class="border text-center text-lg p-1">{{ item.regDate }}</td>
               <td class="border text-center text-lg p-1">{{ item.viewCount }}</td>
+              <td class="border text-center text-lg p-1">{{ item.img }}</td>
               <template v-if="item.list[0]">
-                <td class="border text-center text-lg p-1">
+                <td class="border">
                   <img
                     :src="`${GLOBAL_URL}/file/download/${item.list[0].name}`"
                     alt=""
