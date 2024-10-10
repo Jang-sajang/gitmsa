@@ -5,7 +5,7 @@
       <RouterLink to="/loginview">로그인</RouterLink>
     </div>
     <div class="mx-2">
-      <RouterLink to="/about">회원가입</RouterLink>
+      <RouterLink to="/join">회원가입</RouterLink>
     </div>
   </div>
   <RouterView />
