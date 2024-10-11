@@ -1,13 +1,10 @@
 package com.pmh.org.login;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pmh.org.jwt.JWTManager;
-import com.pmh.org.user.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,11 +20,13 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     public LoginFilter(AuthenticationManager authenticationManager,
                        JWTManager jwtManager) {
+        // post login 들어오면..
         this.setFilterProcessesUrl("/login");
+        // UserDetailsSerivce loadByUsername(String username);
         this.authenticationManager = authenticationManager;
+        // jwt 토큰 만들고 jwt 유효성검사하고..
         this.jwtManager = jwtManager;
     }
-
 
     // 로그인 시도
     @Override
@@ -40,6 +39,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         UsernamePasswordAuthenticationToken token =
                 new UsernamePasswordAuthenticationToken(email, password);
+
+        // UserDetilasSerivce loadUserByUsername함수를 호출..
         return authenticationManager.authenticate(token);
     }
 

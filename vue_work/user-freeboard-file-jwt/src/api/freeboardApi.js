@@ -9,7 +9,7 @@ export const saveFreeboard = async (formData) => {
     const res = await axios.post(`${URL}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer ' + token
+        'Authorization': 'Bearer ' +token
       }
     });
     return res;
@@ -22,10 +22,10 @@ export const getFreeBoard = async (pageNum) => {
   const token = localStorage.getItem('token');
   if (pageNum == undefined) pageNum = 0;
   try {
-    const res = await axios.get(`${URL}?pageNum=${pageNum}`, {
+    const res = await axios.get(`${URL}?pageNum=${pageNum}`,{
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token
+        'Authorization': 'Bearer ' +token
       }
     });
     return res;

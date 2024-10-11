@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="min-height-100 bg-gray-100 flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-md w-96">
       <h2 class="text-2xl font-bold mb-6 text-center">회원가입</h2>
       <form @submit.prevent="doSubmit">
@@ -78,12 +78,12 @@ const doSubmit = async (event) => {
     age: '11',
     email: 'aaa@naver.com'
   });
-  if (res.status == '200') {
+  if(res.status=='200'){
     alert('회원가입 성공 로그인페이지로 이동합니다.');
-    router.push({ name: 'login' });
-  } else {
-    console.log(res);
-    alert('회원가입 실패' + res.response.data.message);
+    router.push({name: 'login'});
+  }
+  else{
+    alert('회원가입 실패'+res.response.data.message);
   }
 };
 </script>

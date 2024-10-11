@@ -1,5 +1,6 @@
 package com.pmh.org.error;
 
+import jakarta.security.auth.message.AuthException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,10 @@ import java.util.Arrays;
 @ControllerAdvice
 public class ErrorController {
 
+//    @ExceptionHandler(AuthException.class)
+
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<ErrorResponse> SQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e){
+    public ResponseEntity<ErrorResponse> sqlIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e){
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .message(e.getMessage())
                 .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR)
