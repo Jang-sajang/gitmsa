@@ -74,36 +74,38 @@ const password = ref('')
 const name = ref('')
 const email = ref('')
 const phoneNumber = ref('')
-// const isAdmin = ref()
+const isAdmin = ref()
 
 const joinuser = () => {
   console.log('nickname = ' + nickname.value)
-  // console.log('password = ' + password.value)
+  console.log('password = ' + password.value)
   console.log('name = ' + name.value)
   console.log('email = ' + email.value)
   console.log('phoneNumber = ' + phoneNumber.value)
-  // console.log('isAdmin = ' + isAdmin.value)
+  console.log('isAdmin = ' + isAdmin.value)
 
   const data = {
     nickname: nickname.value,
     password: password.value,
     name: name.value,
     email: email.value,
-    phonenumber: phoneNumber.value
-  }
-
-  axios
-    .post(`http://192.168.94:8080/user/insert`, data)
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((e) => {
-      console.log(e)
-      alert('에러')
-    })
-
-  router.push({ name: 'loginview' })
+    phonenumber: phoneNumber.value,
+    isAdmin: isAdmin.value
+  };
+  insertUser();
 }
+  async function insertUser(data) {
+  try {
+    const res = await axios.post(`http://192.168.94:8080/user/insert`, data);
+    console.log(res);
+
+    router.push({ name: 'loginview' }); //왜안돼지
+  } catch (e) {
+    console.log(e);
+    alert('에러');
+  }
+};
+
 </script>
 
 <style lang="scss" scoped></style>
