@@ -1,6 +1,6 @@
 package com.pmh.org.login;
 
-import com.pmh.org.jwt.JWTManager;
+import com.pmh.org.login.jwt.JWTManager;
 import com.pmh.org.user.User;
 import com.pmh.org.user.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -66,6 +66,7 @@ public class LoginController {
                 () -> new UsernameNotFoundException(email)
         );
 
+        System.out.println(jwt);
         return ResponseEntity.ok(user);
     }
 }

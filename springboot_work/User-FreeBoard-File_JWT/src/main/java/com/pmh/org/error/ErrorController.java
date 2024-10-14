@@ -15,7 +15,12 @@ import java.util.Arrays;
 @ControllerAdvice
 public class ErrorController {
 
-//    @ExceptionHandler(AuthException.class)
+    @ExceptionHandler(JWTAuthException.class)
+    public ResponseEntity<String> jwtAuthException(JWTAuthException e){
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(e.getMessage());
+    }
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<ErrorResponse> sqlIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e){

@@ -74,12 +74,3 @@ public class FreeBoard {
                 '}';
     }
 }
-
-
-
-
-
-
-
-
-
