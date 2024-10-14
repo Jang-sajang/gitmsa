@@ -16,14 +16,9 @@
 
   <div class="m-5">
     <div class="h-24"></div>
-    <div class="relative w-full h-20"></div>
-    <div class="z-10">
-      <div class="mx-2"></div>
-      <div class="mx-2"></div>
-    </div>
-    <div class="flex">
-      <RouterView />
-    </div>
+
+    <RouterView />
+    <div class="h-24 w-20 absolute top-48 right-6 bg-slate-400" id="sidebann"></div>
   </div>
 </template>
 
