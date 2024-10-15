@@ -1,0 +1,52 @@
+<template>
+  <div
+    class="fixed w-28 top-1/2 right-8 transform -translate-y-1/2 
+    bg-white text-blue-900 p-4 rounded-md shadow-lg hover:bg-slate-100 
+    transition-colors duration-200"
+  >
+    <!-- 배너 내용 -->
+    <h1 class="text-2xl font-bold text-center">Quick</h1>
+    <h2 class="text-lg font-semibold mb-2 text-center">Menu</h2>
+    <hr class="border-gray-300" />
+    <!-- 버튼 -->
+    <button
+      class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
+      @click="handleClick">
+      <img src="../images/calln.jpg" alt="#" class="w-20">
+      <p class="text-sm">클릭하기</p>
+    </button>
+    <button
+      class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
+      @click="handleClick">
+      <img src="../images/Ques.jpg" alt="#" class="w-20">
+      <p class="text-sm">클릭하기</p>
+    </button>
+    <button
+      class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
+      @click="handleClick">
+      <img src="../images/homeIcon.jpg" alt="#" class="w-20">
+      <p class="text-sm">클릭하기</p>
+    </button>
+    <button
+      class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
+      @click="handleClick">
+      <img src="../images/napal.jpg" alt="#" class="w-20">
+      <p class="text-sm">클릭하기</p>
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SideBanner',
+  methods: {
+    handleClick() {
+      alert('버튼이 클릭되었습니다!');
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* 추가적인 스타일이 필요하다면 여기에 작성 */
+</style>

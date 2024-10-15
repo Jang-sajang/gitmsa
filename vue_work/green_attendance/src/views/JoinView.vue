@@ -1,39 +1,43 @@
 <template>
-  <div class="container mx-auto bg-white p-8 rounded shadow-md">
+  <div class="min-w-80 max-w-2xl w-3/4 mx-auto bg-white p-8 rounded shadow-md">
     <h1 class="text-3xl font-bold mb-4 text-center">GREENART COMPUTER ACADEMY</h1>
     <form>
       <div class="mb-4">
-        <label for="id" class="block text-gray-700 text-sm font-bold mb-2">아이디</label>
+        <label for="id" class="block text-gray-700 text-sm font-bold mb-2">아이디 <p class="text-red-500 inline">*</p></label>
         <input
           type="text"
-          id=""
-          v-model="nickname"
+          id="userid"
+          placeholder="아이디를 입력하세요"
+          v-model="userid"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
       <div class="mb-4">
-        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">비밀번호</label>
+        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">비밀번호 <p class="text-red-500 inline">*</p> </label>
         <input
           type="password"
-          id=""
+          id="password"
+          placeholder="비밀번호를 입력하세요"
           v-model="password"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
       <div class="mb-4">
-        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">이름</label>
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">이름 <p class="text-red-500 inline">*</p> </label>
         <input
           type="text"
-          id=""
+          id="name"
+          placeholder="이름을 입력하세요"
           v-model="name"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
       <div class="mb-4">
-        <label for="phoneNumber" class="block text-gray-700 text-sm font-bold mb-2">전화번호</label>
+        <label for="phoneNumber" class="block text-gray-700 text-sm font-bold mb-2">전화번호 <p class="text-red-500 inline">*</p> </label>
         <input
           type="text"
-          id=""
+          id="phoneNumber"
+          placeholder="010-0000-0000"
           v-model="phoneNumber"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
@@ -42,14 +46,30 @@
         <label for="email" class="block text-gray-700 text-sm font-bold mb-2">이메일</label>
         <input
           type="email"
-          id=""
+          id="email"
+          placeholder="[선택] email@naver.com"
           v-model="email"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
       <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2">관리자 여부</label>
-        <input type="checkbox" id="" class="mr-2" />
+        <label for="role" class="block text-gray-700 text-sm font-bold mb-2">관리자 여부</label>
+        <input type="radio" name="role" id="role-1" v-model="role" checked />
+          <label for="role-1" class="p-1 pr-3">학생</label>
+        <input type="radio" name="role" id="role-2" v-model="role" />
+          <label for="role-2" class="p-1 pr-3">선생</label>
+        <input type="radio" name="role" id="role-3" v-model="role" />
+         <label for="role-3" class="p-1 pr-3">관리자</label>
+      </div>
+      <div class="mb-4">
+        <label for="lecture" class="block text-gray-700 text-sm font-bold mb-2">강좌</label>
+        <input
+          type="text"
+          id="lecture"
+          placeholder="[선택] 강좌이름"
+          v-model="lecture"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
       </div>
       <button
         @click="joinuser"
@@ -69,35 +89,37 @@ import axios from 'axios'
 
 const router = useRouter()
 
-const nickname = ref('')
+const userid = ref('')
 const password = ref('')
 const name = ref('')
 const email = ref('')
 const phoneNumber = ref('')
-const isAdmin = ref(false)
+// const role = ref('')
+const lecture = ref('')
 
 const joinuser = async () => {
   const data = {
-    nickname: nickname.value,
+    userid: userid.value,
     password: password.value,
     name: name.value,
     email: email.value,
     phonenumber: phoneNumber.value,
-    isAdmin: isAdmin.value
+    // role: role.value,
+    lecture: lecture.value
+  }
+
+  async function insertUser(data) {
+    try {
+      const res = await axios.post(`http://192.168.67:8080/signin`, data)
+      console.log(res)
+
+      router.push({ name: 'loginview' }) //
+    } catch (e) {
+      console.log(e)
+      alert('에러')
+    }
   }
   await insertUser(data)
-}
-
-async function insertUser(data) {
-  try {
-    const res = await axios.post(`http://192.168.94:8080/user/insert`, data)
-    console.log(res)
-
-    router.push({ name: 'loginview' }) //왜안돼지
-  } catch (e) {
-    console.log(e)
-    alert('에러')
-  }
 }
 </script>
 
