@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed w-28 top-1/2 right-8 transform -translate-y-1/2 
+    class="fixed w-24 lg:w-28 max-sm:hidden top-1/2 right-5 lg:right-8 xl:right-16 transform -translate-y-1/2 
     bg-white text-blue-900 p-4 rounded-md shadow-lg hover:bg-slate-100 
     transition-colors duration-200"
   >
@@ -13,25 +13,25 @@
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
       @click="handleClick">
       <img src="../images/calln.jpg" alt="#" class="w-20">
-      <p class="text-sm">클릭하기</p>
+      <p class="text-sm">출결관리</p>
     </button>
     <button
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
       @click="handleClick">
       <img src="../images/Ques.jpg" alt="#" class="w-20">
-      <p class="text-sm">클릭하기</p>
+      <p class="text-sm">문의사항</p>
     </button>
     <button
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
       @click="handleClick">
       <img src="../images/homeIcon.jpg" alt="#" class="w-20">
-      <p class="text-sm">클릭하기</p>
+      <p class="text-sm">Mypage</p>
     </button>
     <button
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
       @click="handleClick">
       <img src="../images/napal.jpg" alt="#" class="w-20">
-      <p class="text-sm">클릭하기</p>
+      <p class="text-sm">알림마당</p>
     </button>
   </div>
 </template>

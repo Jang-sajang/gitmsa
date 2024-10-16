@@ -1,24 +1,17 @@
 <template>
   <div class="min-w-80 max-w-2xl w-3/4 mx-auto bg-white p-8 rounded shadow-md">
     <h1 class="text-3xl font-bold mb-4 text-center">GREENART COMPUTER ACADEMY</h1>
-    <form @submit.prevent="joinuser">
-      <!-- 아이디 입력 -->
+    <form>
       <div class="mb-4">
-        <label for="userid" class="block text-gray-700 text-sm font-bold mb-2">아이디 <p class="text-red-500 inline">*</p></label>
+        <label for="id" class="block text-gray-700 text-sm font-bold mb-2">아이디 <p class="text-red-500 inline">*</p></label>
         <input
           type="text"
           id="userid"
           placeholder="아이디를 입력하세요"
           v-model="userid"
-          @blur="checkId" 
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        <!-- 중복 확인 메시지 -->
-        <p v-if="idError" class="text-red-500 text-sm">{{ idError }}</p>
-        <p v-if="idAvailable" class="text-green-500 text-sm">사용 가능한 아이디입니다.</p>
       </div>
-
-      <!-- 입력 항목들 -->
       <div class="mb-4">
         <label for="password" class="block text-gray-700 text-sm font-bold mb-2">비밀번호 <p class="text-red-500 inline">*</p> </label>
         <input
@@ -68,9 +61,8 @@
         <input type="radio" name="role" id="role-3" v-model="role" />
          <label for="role-3" class="p-1 pr-3">관리자</label>
       </div>
-      <!-- <div class="mb-4">
+      <div class="mb-4">
         <label for="lecture" class="block text-gray-700 text-sm font-bold mb-2">강좌</label>
-드랍박스 강좌 (미완성)
         <input
           type="text"
           id="lecture"
@@ -78,12 +70,11 @@
           v-model="lecture"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-      </div> -->
+      </div>
       <button
-      @click="joinuser"
+        @click="joinuser"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="button"
-        :disabled="!isIdAvailable"
       >
         회원가입
       </button>
@@ -96,7 +87,6 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
-
 const router = useRouter()
 
 const userid = ref('')
@@ -104,38 +94,8 @@ const password = ref('')
 const name = ref('')
 const email = ref('')
 const phoneNumber = ref('')
-const role = ref('')
+// const role = ref('')
 const lecture = ref('')
-
-// 중복 확인 상태
-const idAvailable = ref(false)  // 아이디가 사용 가능한지 여부
-const idError = ref('')         // 오류 메시지
-
-const checkId = async () => {
-  // 아이디가 비어있을 경우
-  if (!userid.value) {
-    idError.value = '아이디를 입력해 주세요.'
-    idAvailable.value = false
-    return
-  }
-
-  try {
-    const response = await axios.post('http://192.168.67:8080/check-id', { userid: userid.value })
-    
-    // 서버에서 중복 여부를 반환한다고 가정
-    if (response.data.exists) {
-      idError.value = '이미 사용 중인 아이디입니다.'
-      idAvailable.value = false
-    } else {
-      idError.value = ''
-      idAvailable.value = true
-    }
-  } catch (error) {
-    console.log(error)
-    idError.value = '아이디 중복 확인에 실패했습니다.'
-    idAvailable.value = false
-  }
-}
 
 const joinuser = async () => {
   const data = {
@@ -143,18 +103,24 @@ const joinuser = async () => {
     password: password.value,
     name: name.value,
     email: email.value,
-    phoneNumber: phoneNumber.value,
-    role: role.value,
+    phonenumber: phoneNumber.value,
+    // role: role.value,
     lecture: lecture.value
   }
 
-  try {
-    const res = await axios.post('http://192.168.67:8080/signin', data)
-    console.log(res)
-    router.push({ name: 'loginview' })
-  } catch (e) {
-    console.log(e)
-    alert('에러')
+  async function insertUser(data) {
+    try {
+      const res = await axios.post(`http://192.168.67:8080/signin`, data)
+      console.log(res)
+
+      router.push({ name: 'loginview' }) //
+    } catch (e) {
+      console.log(e)
+      alert('에러')
+    }
   }
+  await insertUser(data)
 }
 </script>
+
+<style lang="scss" scoped></style>

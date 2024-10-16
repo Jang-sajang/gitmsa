@@ -1,4 +1,7 @@
 <template>
+    <DropBox/>
+
+
     <div>
         <!-- component -->
 <div class="flex justify-center items-center min-h-screen">
@@ -45,9 +48,14 @@
     </div>
 </div>
     </div>
+
+
+
 </template>
 
 <script setup>
+import DropBox from '@/component/DropBox.vue';
+
 
 </script>
 
