@@ -68,9 +68,10 @@
         <input type="radio" name="role" id="role-3" v-model="role" />
          <label for="role-3" class="p-1 pr-3">관리자</label>
       </div>
-      <!-- <div class="mb-4">
+       <!-- <div class="mb-4">
         <label for="lecture" class="block text-gray-700 text-sm font-bold mb-2">강좌</label>
-드랍박스 강좌 (미완성)
+        <DropBox/>
+드랍박스 강좌 
         <input
           type="text"
           id="lecture"
@@ -78,7 +79,7 @@
           v-model="lecture"
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-      </div> -->
+      </div>  -->
       <button
       @click="joinuser"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -95,6 +96,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+
 
 
 const router = useRouter()

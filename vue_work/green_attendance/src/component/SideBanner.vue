@@ -25,7 +25,7 @@
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
       @click="handleClick">
       <img src="../images/homeIcon.jpg" alt="#" class="w-20">
-      <p class="text-sm">Mypage</p>
+      <p class="text-sm">내페이지</p>
     </button>
     <button
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
