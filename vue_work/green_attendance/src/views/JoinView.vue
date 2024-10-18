@@ -1,4 +1,5 @@
 <template>
+  <div class="absolute"> <SideBar/> </div>
   <div class="min-w-80 max-w-2xl w-3/4 mx-auto bg-white p-8 rounded shadow-md">
     <h1 class="text-3xl font-bold mb-4 text-center">GREENART COMPUTER ACADEMY</h1>
     <form @submit.prevent="joinuser">
@@ -96,6 +97,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
+import SideBar from '@/component/SideBar.vue';
 
 
 

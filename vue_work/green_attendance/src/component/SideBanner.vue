@@ -36,15 +36,17 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SideBanner',
-  methods: {
-    handleClick() {
-      alert('버튼이 클릭되었습니다!');
-    },
-  },
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
+const handleClick= () => {
+console.log('hi')
+  router.push({ name: 'mypage'})
 };
+
+
 </script>
 
 <style scoped>

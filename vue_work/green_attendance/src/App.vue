@@ -9,7 +9,6 @@
         <div class="mr-2"><RouterLink to="/join">| 회원가입</RouterLink></div>
         <div class="mr-2"><RouterLink to="/vacationform">| 알림마당</RouterLink></div>
         <div class="mr-20"><RouterLink to="/laboview">| 연구실</RouterLink></div>
-
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-blue-200 h-40">
         <img class="-z-30 h-40 w-full" src="../src/images/wbar_t.jpg" alt="" />
@@ -22,16 +21,16 @@
 
     <RouterView />
     <!-- 사이드배너 -->
-    <div class="" id="sidebann"> 
+    <div class="" id="sidebann">
       <div>
-<SideBanner></SideBanner>
+        <SideBanner />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import SideBanner from './component/SideBanner.vue';
+import SideBanner from './component/SideBanner.vue'
 </script>
 
 <style lang="scss" scoped></style>
