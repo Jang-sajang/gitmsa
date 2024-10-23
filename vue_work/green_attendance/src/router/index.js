@@ -3,7 +3,8 @@ import LoginView from '../views/LoginView.vue'
 import LoginHome from '@/views/LoginHome.vue'
 import LaboView from '@/views/LaboView.vue'
 import VacationForm from '@/views/VacationForm.vue'
-import Mypage from '@/views/Mypage.vue'
+import JoinView from '../views/JoinView.vue'
+import Mypage from '@/views/MyPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,7 +38,13 @@ const router = createRouter({
       path: '/mypage',
       name: 'mypage',
       component: Mypage
-    }
+    },
+    {
+      path: '/joinview',
+      name: 'joinview',
+      component: JoinView
+    },
+
   ]
 })
 

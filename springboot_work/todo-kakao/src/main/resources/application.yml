@@ -37,6 +37,6 @@ spring:
       file-size-threshold: 0
       enabled: true
 
-
+msa:
   jwt:
     secret: abcdefghijklmnopqrstuvwxyz01234567890

@@ -1,7 +1,9 @@
 <template>
   <div class="text-center">
-    <h1 class="mt-10">LOGO</h1>
-    <div>
+    <div class="flex justify-center">
+      <img src="../images/LOGO.PNG" alt="#" class="w-1/6 max-md:w-28">
+    </div>
+    <div class="h-64 flex flex-col justify-center items-center">
       <ol>
         <ul>
           <p>
@@ -28,10 +30,11 @@
           </p>
         </ul>
       </ol>
-      <div class="m-2">
+      <div class="m-2 my-5">
+        <p v-if="loginError">{{ loginError }}</p>
         <input
           @click="LoginSequence"
-          class="border-black rounded border-2 my-5 bg-gray-200 hover:opacity-30 hover:bg-gray-300 cursor-pointer"
+          class="border-black rounded border-2 bg-gray-200 hover:opacity-30 hover:bg-gray-300 cursor-pointer"
           type="submit"
           value="로그인"
         />
@@ -43,10 +46,15 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router';
 
 const userid = ref('')
 const password = ref('')
-const errorMessage = ref('') // 에러 메시지를 저장할 변수
+
+const loginError = ref('')
+const router = useRouter();
+
+// const errorMessage = ref('') // 에러 메시지를 저장할 변수
 
 const LoginSequence = async () => {
   try {
@@ -56,15 +64,36 @@ const LoginSequence = async () => {
       `http://192.168.67:8080/sign/login?userid=${userid.value}&password=${password.value}`
     )
     if (response) {
-      console.log(response.data)
+      const token = response.data
+      localStorage.setItem("access_token",token)
+      console.log('로그인 성공, 토큰:'+ token)
+      router.push({path:'mypage'}) // 안된다
     } else {
-      errorMessage.value = '로그인에 실패했습니다. 다시 시도하세요.'
+    console.log('로그인실패 ' + response)
+    loginError.value = '로그인 실패'
     }
   } catch (error) {
-    errorMessage.value = '서버와의 통신에 문제가 발생했습니다.'
-    console.error(error)
+    console.error('error' + error)
+    loginError.value = '로그인 에러'
   }
 }
+// 로그인 유지
+const onMounted = (() => {
+  // Axios 요청 시 토큰을 헤더에 자동으로 추가
+  axios.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('access_token')
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}` // 토큰을 Bearer 형태로 추가
+      }
+      return config
+    },
+    (error) => {
+      return Promise.reject(error)
+    }
+  )
+})
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -29,7 +29,13 @@ public class KakaoService {
     private final Environment environment;
     private final JWTUtils jwtUtils;
 
-    public void getToken(String code) {
+    /*
+     1. 카카오 https://kauth.kakao.com/oauth/token -> accessToken 발급
+     2. 카카오 https://kapi.kakao.com/v2/user/me -> 유저정보 가져오기
+     3. KakaoEntity -> 테이블 행삽입 -> 해당하는 이메일 검사...
+     4. JWT(JSON Web Token) -> JWTUtils.createJWT(email) 해서 반환...
+     */
+    public String getToken(String code) {
         try {
             String url = "https://kauth.kakao.com/oauth/token";
             RestTemplate restTemplate = new RestTemplate();
@@ -74,39 +80,44 @@ public class KakaoService {
             kakaoRepository.save(kakaoEntity);
 
             // 우리꺼 JWT 만들어주기..
-            jwtUtils.createJwt(kakaoEntity.getEmail());
-
+            String jwt = jwtUtils.createJwt(kakaoEntity.getEmail());
+            return jwt;
             // db 저장
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "fail";
     }
 
-    public void messageSend(String email, String message) {
+    public void messageSend(String jwt, String message) {
+        String email = jwtUtils.getEmailFromJwt(jwt);
+
         RestTemplate restTemplate = new RestTemplate();
         // access
         String url = "https://kapi.kakao.com/v2/api/talk/memo/default/send";
 
+        // headers content-type accessToken
         MultiValueMap headers2 = new LinkedMultiValueMap();
         headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-        // db accesstoken 가져올 계획...
-//        headers2.add("Authorization", "Bearer " + kakaoTokenDto.getAccess_token());
 
+        KakaoEntity kakaoEntity = kakaoRepository.findByEmail(email);
+        headers2.add("Authorization", "Bearer " + kakaoEntity.getAccess_token());
+
+        // body message
         MultiValueMap<String, String> body2 = new LinkedMultiValueMap<>();
-        body2.add("template_object", String.format(messageString(), "aaa@naver.com"));
+        body2.add("template_object", String.format(messageString(), email, message));
 
         HttpEntity<MultiValueMap<String, String>> requestEntity2 = new HttpEntity<>(body2, headers2);
 
         ResponseEntity<String> result2 = restTemplate.exchange(url, HttpMethod.POST, requestEntity2, String.class);
         log.info("msg 카카옥 메시지 전송 성공....." + result2.toString());
-
         // 메시지 보내는 끝....
     }
 
     public String messageString() {
         return "{\n" +
                 "        \"object_type\": \"text\",\n" +
-                "        \"text\": \"안녕하세요 %s 님 우리페이지 가입해 주셔서 감사합니다.\",\n" +
+                "        \"text\": \"%s %s\",\n" +
                 "        \"link\": {\n" +
                 "            \"web_url\": \"http://first.hellomh.site/first/test\",\n" +
                 "            \"mobile_web_url\": \"http://first.hellomh.site/first/test\"\n" +

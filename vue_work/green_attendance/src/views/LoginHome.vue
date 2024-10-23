@@ -60,12 +60,20 @@
 
   <div class="text-center">
     <p class="text-blue-900 font-bold text-sm">회원이 아니신가요?</p>
-    <button class="border-2 bg-blue-900 text-white font-bold px-10 py-3 text-sm rounded-sm">
+    <button  @click="ToJoinview()" class="border-2 bg-blue-900 text-white font-bold px-10 py-3 text-sm rounded-sm">
       회원가입 페이지로이동하기
     </button>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const ToJoinview = () =>{
+  router.push({path:'joinview'})
+};
+
+</script>
 
 <style lang="scss" scoped></style>

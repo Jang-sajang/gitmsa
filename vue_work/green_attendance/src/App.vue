@@ -2,7 +2,9 @@
   <nav class="relative mx-0">
     <div class="flex justify-between">
       <div class="flex items-center space-x-4 z-10">
-        <div class="text-white mx-2 text-xl p-2"><RouterLink to="/">LOGO</RouterLink></div>
+        <div class="w-1/6"><RouterLink to="/">
+          <img src="./images/LOGO.PNG" alt="" class=" max-md:w-28 ml-3">
+        </RouterLink></div>
       </div>
       <div class="flex items-center text-white z-10">
         <div class="mr-2"><RouterLink to="/loginview">| 로그인</RouterLink></div>
