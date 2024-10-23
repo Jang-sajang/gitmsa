@@ -14,14 +14,13 @@ import java.io.IOException;
 @Slf4j
 public class JWTInspectFilter extends OncePerRequestFilter {
 
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        log.info("Filter 지나감");
-        //다음 요청으로 진행
+
+        // 지나가라...
         filterChain.doFilter(request, response);
     }
 }
