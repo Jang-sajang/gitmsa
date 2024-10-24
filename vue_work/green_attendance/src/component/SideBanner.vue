@@ -7,13 +7,14 @@
     <h2 class="text-lg font-semibold mb-2 text-center">Menu</h2>
     <hr class="border-gray-300" />
     <!-- 버튼 -->
+     <RouterLink to="attendancecheck">
     <button
-      class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
-      @click="handleClick"
-    >
+      class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300">
+
       <img src="../images/calln.jpg" alt="#" class="w-20" />
       <p class="text-sm">출결관리</p>
     </button>
+  </RouterLink>
     <button
       class="block mt-2 bg-white text-blue-900 px-3 py-1 rounded hover:bg-gray-200 transition-colors duration-300"
       @click="handleClick"
@@ -44,7 +45,6 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const handleClick = () => {
-  console.log('hi')
   router.push({ name: 'mypage' })
 }
 </script>

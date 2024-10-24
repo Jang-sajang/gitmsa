@@ -39,15 +39,30 @@
           <input type="text" id="" class="h-7 border rounded-md" placeholder="000-0000-0000" />
         </div>
         <div class="justify-end flex">
-          <button type="button" class="border-2 p-2 bg-blue-600 rounded-lg text-white hover:opacity-85">제출</button>
+          <button
+            @click="sub"
+            type="button"
+            class="border-2 p-2 bg-blue-600 rounded-lg text-white hover:opacity-85"
+          >
+            제출
+          </button>
         </div>
       </div>
+    </div>
+    <hr class="my-5 w-1/2 mx-auto">
+    <div class="flex justify-center items-center">
+      <VacationManage />
     </div>
   </div>
 </template>
 
 <script setup>
 import SideBar from '@/component/SideBar.vue'
+import VacationManage from '@/component/VacationManage.vue'
+
+const sub = () => {
+  alert('제출합니다')
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -78,21 +78,21 @@ const LoginSequence = async () => {
   }
 }
 // 로그인 유지
-const onMounted = (() => {
-  // Axios 요청 시 토큰을 헤더에 자동으로 추가
-  axios.interceptors.request.use(
-    (config) => {
-      const token = localStorage.getItem('access_token')
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}` // 토큰을 Bearer 형태로 추가
-      }
-      return config
-    },
-    (error) => {
-      return Promise.reject(error)
-    }
-  )
-})
+// const onMounted = (() => {
+//   // Axios 요청 시 토큰을 헤더에 자동으로 추가
+//   axios.interceptors.request.use(
+//     (config) => {
+//       const token = localStorage.getItem('access_token')
+//       if (token) {
+//         config.headers.Authorization = `Bearer ${token}` // 토큰을 Bearer 형태로 추가
+//       }
+//       return config
+//     },
+//     (error) => {
+//       return Promise.reject(error)
+//     }
+//   )
+// })
 
 </script>
 

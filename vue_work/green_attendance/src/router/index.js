@@ -5,6 +5,8 @@ import LaboView from '@/views/LaboView.vue'
 import VacationForm from '@/views/VacationForm.vue'
 import JoinView from '../views/JoinView.vue'
 import Mypage from '@/views/MyPage.vue'
+import LectureSelect from '@/views/LectureSelect.vue'
+import AttendanceCheck from '@/views/AttendanceCheck.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,7 +46,16 @@ const router = createRouter({
       name: 'joinview',
       component: JoinView
     },
-
+    {
+      path: '/lectureslect',
+      name: 'lectureselect',
+      component: LectureSelect
+    },
+    {
+      path: '/attencancecheck',
+      name: 'attencancecheck',
+      component: AttendanceCheck
+    },
   ]
 })
 

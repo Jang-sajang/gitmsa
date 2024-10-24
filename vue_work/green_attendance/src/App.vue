@@ -9,7 +9,7 @@
       <div class="flex items-center text-white z-10">
         <div class="mr-2"><RouterLink to="/loginview">| 로그인</RouterLink></div>
         <div class="mr-2"><RouterLink to="/join">| 회원가입</RouterLink></div>
-        <div class="mr-2"><RouterLink to="/vacationform">| 알림마당</RouterLink></div>
+        <div class="mr-2"><RouterLink to="/vacationform">| 휴가신청</RouterLink></div>
         <div class="mr-20"><RouterLink to="/laboview">| 연구실</RouterLink></div>
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-blue-200 h-40">

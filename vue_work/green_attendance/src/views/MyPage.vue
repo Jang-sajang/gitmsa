@@ -10,7 +10,7 @@
     </aside>
 
     <!-- 사용자 정보 영역 -->
-    <div class="px-10 space-y-4">
+    <div class="px-10 space-y-4 py-6">
       <!-- 이름 -->
       <div class="flex">
         <span class="font-bold text-gray-800 w-24">이름 </span>
@@ -31,13 +31,15 @@
 
   <hr class="border-2 border-b-blue-900 w-2/3 mx-auto" />
   <h1 class="mx-60 py-4 text-blue-800 font-bold">수강중인 강좌</h1>
-  <div class="mx-60">
-    <div class="flex">
-      강좌1
-      <input type="text" name="강의정보" id="" class="border" />
+  <div class="mx-60 flex flex-col justify-center items-center ">
+    <div class="flex my-3">
+      <h class="w-20 border text-center justify-center items-center flex bg-blue-900 text-white text-sm">강좌1</h>
+      <input type="text" name="강의정보" id="" class="border mx-3 w-96 h-10 text-xs" placeholder=" 강의정보-강사:000 / 강의시간 0교시"/>
     </div>
-    <div class="flex">강좌2</div>
-    <input type="text" name="강의정보" id="" class="border" />
+    <div class="flex">
+      <h class="w-20 border text-center justify-center items-center flex bg-blue-900 text-white text-sm">강좌2</h>
+      <input type="text" name="강의정보" id="" class="border mx-3 w-96 h-10 text-xs" placeholder=" 강의정보-강사:000 / 강의시간 0교시"/>
+    </div>
   </div>
 </template>
 

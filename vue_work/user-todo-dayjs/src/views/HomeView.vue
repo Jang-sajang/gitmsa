@@ -57,7 +57,7 @@ console.log("dayjs().isSame(dayjs().endOf('month'),'month') = "+dayjs().isSame(d
 <template>
   <main>
     <h1>HOME 달력 연습</h1>
-
+ <h1 class="text-8xl bg-orange-500">우혁이의 페이지</h1>
     <h1 class="text-5xl">hello vue</h1>
     <h1 class="text-5xl">{{ now.format('YYYY/MM/DD') }}</h1>
     <h1 class="text-5xl">{{ now.get('month') }}월</h1>
