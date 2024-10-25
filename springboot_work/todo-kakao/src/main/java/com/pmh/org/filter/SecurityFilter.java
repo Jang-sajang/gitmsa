@@ -1,5 +1,6 @@
 package com.pmh.org.filter;
 
+import com.pmh.org.error.UserException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,47 +18,35 @@ import java.io.IOException;
 @Slf4j
 public class SecurityFilter extends OncePerRequestFilter {
 
+    private final JWTUtils jwtUtils;
+
+    public SecurityFilter(JWTUtils jwtUtils) {
+        this.jwtUtils = jwtUtils;
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        log.info("Security Filter");
-
-        String authorization = request.getHeader("Authorization");
-        log.info("Security Filter" + authorization);
-
-        if ( authorization == null || !authorization.startsWith("Bearer ")){
-            filterChain.doFilter(request,response);
-            return;
-        }
-
-//        String jwt = authorization.split("Bearer "+ )
-
-        Authentication authentication =
-                new UsernamePasswordAuthenticationToken(
-                        User.builder()
-                                .username("aaa@naver.com")
-                                .password("123")
+        try {
+            String authorization = request.getHeader("Authorization");
+            log.info("Security Filter"+authorization);
+            String jwt = authorization.split("Bearer ")[1];
+            String email = jwtUtils.getEmailFromJwt(jwt);
+            Authentication authentication =
+                    new UsernamePasswordAuthenticationToken(
+                            User.builder()
+                                .username(email)
+                                .password("temp")
                                 .roles("ADMIN")
                                 .build()
-                        ,null
-                );
+                            , null
+                    );
 
-        SecurityContextHolder.getContext()
-                .setAuthentication(authentication);
-
-        /*
-        프론트 에서 넘겨준
-        jwt 토큰 까서...
-        UserPasswordAuthenticationToken
-        authentication
-        securityContext
-         */
-
-//        SecurityContextHolder.getContext()
-//                .setAuthentication(authentication);
-
-        // 지나가라...
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         filterChain.doFilter(request, response);
     }
 }
