@@ -2,7 +2,7 @@
   <div class="absolute max-md:hidden"><SideBar></SideBar></div>
   <div>
     <h1 class="md:ml-52">| 학생용 (VacationForm)</h1>
-    <div class="w-1/2 mx-auto">
+    <div class="w-1/2 mx-auto min-w-80">
       <div class="">
         <h1 class="pt-10 text-blue-900 font-extrabold">휴가 신청서 제출</h1>
       </div>
@@ -51,14 +51,12 @@
     </div>
     <hr class="my-5 w-1/2 mx-auto">
     <div class="flex justify-center items-center">
-      <VacationManage />
     </div>
   </div>
 </template>
 
 <script setup>
 import SideBar from '@/component/SideBar.vue'
-import VacationManage from '@/component/VacationManage.vue'
 
 const sub = () => {
   alert('제출합니다')

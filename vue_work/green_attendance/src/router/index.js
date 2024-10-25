@@ -47,13 +47,13 @@ const router = createRouter({
       component: JoinView
     },
     {
-      path: '/lectureslect',
+      path: '/lectureselect',
       name: 'lectureselect',
       component: LectureSelect
     },
     {
-      path: '/attencancecheck',
-      name: 'attencancecheck',
+      path: '/attendancecheck',
+      name: 'attendancecheck',
       component: AttendanceCheck
     },
   ]

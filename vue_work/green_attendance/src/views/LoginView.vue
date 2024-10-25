@@ -1,37 +1,29 @@
 <template>
   <div class="text-center">
     <div class="flex justify-center">
-      <img src="../images/LOGO.PNG" alt="#" class="w-1/6 max-md:w-28">
+      <img src="../images/LOGO.PNG" alt="#" class="w-32 max-md:w-28" />
     </div>
-    <div class="h-64 flex flex-col justify-center items-center">
-      <ol>
-        <ul>
-          <p>
-            아이디
-            <input
-              class="bg-slate-200 h-8"
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 shadow-md">
+      <div class="justify-center items-center flex flex-col space-y-3 my-3 mt-10">
+          <p>아이디<input
+              class="ml-5 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 shadow-sm"
               type="text"
               name="userid"
               id="userid"
               v-model="userid"
             />
           </p>
-        </ul>
-        <ul>
-          <p>
-            비밀번호
-            <input
-              class="bg-slate-200 p-2 my-2"
+          <p>비밀번호<input
+              class="ml-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 shadow-sm"
               type="password"
               name="password"
               id="password"
               v-model="password"
             />
           </p>
-        </ul>
-      </ol>
+        </div>
       <div class="m-2 my-5">
-        <p v-if="loginError">{{ loginError }}</p>
+        <p class="pb-2 text-rose-600 font-bold" v-if="loginError">{{ loginError }}</p>
         <input
           @click="LoginSequence"
           class="border-black rounded border-2 bg-gray-200 hover:opacity-30 hover:bg-gray-300 cursor-pointer"
@@ -46,13 +38,13 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 const userid = ref('')
 const password = ref('')
 
 const loginError = ref('')
-const router = useRouter();
+const router = useRouter()
 
 // const errorMessage = ref('') // 에러 메시지를 저장할 변수
 
@@ -60,17 +52,17 @@ const LoginSequence = async () => {
   try {
     // 백엔드로 보낼 데이터
 
-    const response = await axios.get(
+    const response = await axios.post(
       `http://192.168.67:8080/sign/login?userid=${userid.value}&password=${password.value}`
     )
     if (response) {
       const token = response.data
-      localStorage.setItem("access_token",token)
-      console.log('로그인 성공, 토큰:'+ token)
-      router.push({path:'mypage'}) // 안된다
+      localStorage.setItem('access_token', token)
+      console.log('로그인 성공, 토큰:' + token)
+      router.push({ path: 'mypage' }) // 안된다
     } else {
-    console.log('로그인실패 ' + response)
-    loginError.value = '로그인 실패'
+      console.log('로그인실패 ' + response)
+      loginError.value = '아이디와 비밀번호를 확인해 주세요'
     }
   } catch (error) {
     console.error('error' + error)
@@ -93,7 +85,6 @@ const LoginSequence = async () => {
 //     }
 //   )
 // })
-
 </script>
 
 <style lang="scss" scoped></style>
