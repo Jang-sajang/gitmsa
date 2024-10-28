@@ -23,7 +23,6 @@ export const saveTodo = async (title, content, selectDate) => {
 };
 
 export const getTodos = async () => {
-	if (localStorage.getItem('token') === undefined || localStorage.getItem('token') === null) return;
 	const headers = {
 		'Content-Type': 'application/json',
 		Authorization: `Bearer ${localStorage.getItem('token')}`,

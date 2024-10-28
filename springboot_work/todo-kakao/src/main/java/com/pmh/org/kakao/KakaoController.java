@@ -37,7 +37,7 @@ public class KakaoController {
 
     @GetMapping("msg")
     public ResponseEntity<String> messageSend(@RequestParam(value = "message") String message,
-                                              @RequestHeader(value = "Authorization",required = false) String authorization
+                        @RequestHeader(value = "Authorization",required = false) String authorization
     ) {
 //        log.info(authorization);
         // Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im11bmdzdW5zYW5nQGtha2FvLmNvbSIsInJvbGUiOiJST0xFX0FETUlOIiwiaWF0IjoxNzI5NjQ5MzkzLCJleHAiOjE3Mjk3MzU3OTN9.5weQe0m9e9RIS9tOUPTx23N0Wv-3Jt7nr_GFIf8akbU

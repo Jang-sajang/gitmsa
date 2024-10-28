@@ -1,13 +1,15 @@
 <script setup>
-import { ref, watch, watchEffect } from 'vue';
+import { ref, watch } from 'vue';
 import dayjs from 'dayjs';
-import { saveTodo, getTodos } from '@/api/monthApi.js';
+import { getTodos, saveTodo } from '@/api/monthApi.js';
 
 // import utc from 'dayjs/plugin/utc';
 // import timezone from 'dayjs/plugin/timezone';
 
 // dayjs.extend(utc);
 // dayjs.extend(timezone);
+
+const isDisabled = ref(false);
 
 const now = ref(dayjs());
 const columns = ref([]);
@@ -20,12 +22,38 @@ const content = ref('');
 
 const todos = ref([]);
 
+const toast = ref(false);
+
+const setDate = (e) => {
+	selectDate.value = e.target.value;
+};
+
 const doSave = async () => {
-	console.log('save', title.value, content.value, selectDate.value);
+	isDisabled.value = true;
+
+	// 백엔드에 넘겨줘야함...
+	// console.log('save', title.value, content.value, selectDate.value);
 	await saveTodo(title.value, content.value, selectDate.value);
+	await doGet();
+
+	title.value = '';
+	content.value = '';
+	toast.value = true;
+
+	setTimeout(() => {
+		toast.value = false;
+		isDisabled.value = false;
+	}, 3000);
+};
+
+const doGet = async () => {
 	const res = await getTodos();
-	if (res.status == 200) {
-		todos.value = res.data;
+	if (res.status == '200') {
+		const newData = res.data;
+		// console.log('todos.value', JSON.stringify(todos.value));
+		// console.log('newData', JSON.stringify(newData));
+		// 새로운 할일들 가지고 와서 원래 할일들과 비교해서 다르면 해라
+		if (JSON.stringify(todos.value) !== JSON.stringify(newData)) todos.value = res.data;
 	}
 };
 
@@ -41,8 +69,10 @@ const selectDateFn = (date) => {
 };
 
 watch(
-	now,
-	(newValue, _) => {
+	[now, todos],
+	async () => {
+		await doGet();
+
 		columns.value = []; // 원래 있던 값 제거
 		groupColumns.value = []; // 원래 있던 값 제거
 		// 제일 처음 로딩 할때는 now는 현재 달력...
@@ -63,9 +93,6 @@ watch(
 		for (let i = 1; i <= 6 - lastdayOfWeek; i++) {
 			columns.value.push(dayjs(lastday).add(i, 'day'));
 		}
-		// groupColumns
-		//   7                 7                   7                     7                      7
-		// ([29,30,1,2,3,4,5],[6,7,8,9,10,11,12],[13,14,15,16,17,18,19],[20,21,22,23,24,25,26],[27,28,29,30,31,1,2]))
 
 		groupColumns.value.push(columns.value.slice(0, 7));
 		groupColumns.value.push(columns.value.slice(7, 14));
@@ -78,17 +105,16 @@ watch(
 		deep: true, // 안에 값이 객체이면 객체 안에 변수도 변경 될때 watch안에 있는 함수 실행
 	},
 );
-
-watchEffect(async () => {
-	const res = await getTodos();
-	if (res.status == 200) {
-		todos.value = res.data;
-	}
-});
+// watchEffect(async () => {
+// 	const res = await getTodos();
+// 	if (res.status == '200') {
+// 		todos.value = res.data;
+// 	}
+// });
 </script>
 
 <template>
-	<div>
+	<div class="pt-32">
 		<h1>MonthView</h1>
 		<main class="flex justify-center">
 			<div class="max-w-lg w-full bg-white shadow-md rounded-lg p-4">
@@ -118,14 +144,21 @@ watchEffect(async () => {
 							'opacity-20': !column.isSame(now, 'month'),
 						}"
 					>
-						<span>{{ column.get('date') }}</span>
-						<template v-for="todo in todos" :key="todo">
-							<div v-if="todo.selectDate == column.format('YYYY-MM-DD')">
-								<div class="mt-2 text-red">
-									<span>{{ todo.title }}</span>
+						<span>
+							{{ column.get('date') }}
+							<template v-for="todo in todos" :key="todo">
+								<div
+									class="rounded"
+									:class="{
+										'bg-red-500': todo.completed == '0',
+										'bg-blue-500': todo.completed == '1',
+									}"
+									v-if="todo.selectDate === column.format('YYYY-MM-DD')"
+								>
+									{{ todo.title }}
 								</div>
-							</div>
-						</template>
+							</template>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -160,17 +193,18 @@ watchEffect(async () => {
 					<div class="mb-6">
 						<label for="due-date" class="block text-gray-700 text-sm font-bold mb-2">마감일</label>
 						<input
+							@change="setDate"
 							v-model="selectDate"
 							type="date"
 							id="due-date"
 							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						/>
 					</div>
-
 					<div class="flex items-center justify-center">
 						<button
+							:disabled="isDisabled"
 							type="submit"
-							class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+							class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							등록하기
 						</button>
@@ -179,4 +213,7 @@ watchEffect(async () => {
 			</div>
 		</div>
 	</div>
+	<template v-if="toast">
+		<div class="toast">등록하였습니다.</div>
+	</template>
 </template>
