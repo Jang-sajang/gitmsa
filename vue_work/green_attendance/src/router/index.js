@@ -7,6 +7,7 @@ import JoinView from '../views/JoinView.vue'
 import Mypage from '@/views/MyPage.vue'
 import LectureSelect from '@/views/LectureSelect.vue'
 import AttendanceCheck from '@/views/AttendanceCheck.vue'
+import GuestAttendance from '@/views/GuestAttendance.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
       path: '/',
       name: 'loginhome',
       component: LoginHome
+    },
+    {
+      path: '/guestattendance',
+      name: 'guestattendance',
+      component: GuestAttendance
     },
     {
       path: '/loginview',

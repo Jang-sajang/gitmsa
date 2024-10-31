@@ -3,10 +3,10 @@
     <div class="flex justify-center">
       <img src="../images/LOGO.PNG" alt="#" class="w-32 max-md:w-28" />
     </div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 shadow-md">
-      <div class="justify-center items-center flex flex-col space-y-3 my-3 mt-10">
+    <div class="absolute p-4 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-md top-1/2 left-1/2">
+      <div class="flex flex-col items-center justify-center my-3 mt-10 space-y-3">
           <p>아이디<input
-              class="ml-5 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 shadow-sm"
+              class="p-2 ml-5 transition duration-200 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               type="text"
               name="userid"
               id="userid"
@@ -14,7 +14,7 @@
             />
           </p>
           <p>비밀번호<input
-              class="ml-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 shadow-sm"
+              class="p-2 ml-1 transition duration-200 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               type="password"
               name="password"
               id="password"
@@ -23,10 +23,10 @@
           </p>
         </div>
       <div class="m-2 my-5">
-        <p class="pb-2 text-rose-600 font-bold" v-if="loginError">{{ loginError }}</p>
+        <p class="pb-2 font-bold text-rose-600" v-if="loginError">{{ loginError }}</p>
         <input
           @click="LoginSequence"
-          class="border-black rounded border-2 bg-gray-200 hover:opacity-30 hover:bg-gray-300 cursor-pointer"
+          class="bg-gray-200 border-2 border-black rounded cursor-pointer hover:opacity-30 hover:bg-gray-300"
           type="submit"
           value="로그인"
         />
@@ -49,11 +49,15 @@ const router = useRouter()
 // const errorMessage = ref('') // 에러 메시지를 저장할 변수
 
 const LoginSequence = async () => {
+  const data = {
+    "userid": userid.value,
+    "password": password.value
+  }
   try {
     // 백엔드로 보낼 데이터
 
     const response = await axios.post(
-      `http://192.168.67:8080/sign/login?userid=${userid.value}&password=${password.value}`
+      `http://192.168.67:8080/sign/login`, data
     )
     if (response) {
       const token = response.data

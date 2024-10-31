@@ -1,17 +1,17 @@
 <template>
-  <div class="flex justify-center items-center space-x-4 p-10">
+  <div class="flex items-center justify-center p-10 space-x-4">
     <!-- 교직원/학생 로그인 -->
     <div class="flex flex-col items-center">
-      <h3 class="text-lg font-bold text-blue-700 mb-2">교직원/학생 로그인</h3>
+      <h3 class="mb-2 text-lg font-bold text-blue-700">교직원/학생 로그인</h3>
       <div
         class="bg-white shadow-lg rounded-lg p-6 w-64 h-60 flex flex-col items-center bg-gradient-to-t from-sky-300 to-60%"
       >
         <img src="../images/stu.png" alt="" class="w-20" />
 
-        <p class="text-sm text-gray-500 mt-2">교직원/학생 전용 로그인입니다.</p>
-        <div class="flex items-center mt-4 justify-center">
+        <p class="mt-2 text-sm text-gray-500">교직원/학생 전용 로그인입니다.</p>
+        <div class="flex items-center justify-center mt-4">
           <RouterLink to="/loginview">
-            <button type="button" class="text-blue-700 font-semibold inline-flex">
+            <button type="button" class="inline-flex font-semibold text-blue-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -24,7 +24,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <p class="py-5 p-5">교직원/학생</p>
+              <p class="p-5 py-5">교직원/학생</p>
             </button>
           </RouterLink>
         </div>
@@ -33,15 +33,15 @@
 
     <!-- 비로그인 (출결용) -->
     <div class="flex flex-col items-center">
-      <h3 class="text-lg font-bold text-blue-700 mb-2">비로그인 (출결용)</h3>
+      <h3 class="mb-2 text-lg font-bold text-blue-700">비로그인 (출결용)</h3>
       <div
         class="bg-white shadow-lg rounded-lg p-6 w-64 h-60 flex flex-col items-center bg-gradient-to-t from-sky-300 to-60%"
       >
         <img src="../images/tea.png" alt="#" class="w-20" />
-        <p class="text-sm text-gray-500 mt-2">출결 전용 페이지입니다.</p>
+        <p class="mt-2 text-sm text-gray-500">출결 전용 페이지입니다.</p>
         <div class="flex items-center mt-4">
-          <RouterLink to="/loginview">
-            <button type="button" class="text-blue-700 font-semibold inline-flex">
+          <RouterLink to="/guestattendance">
+            <button type="button" class="inline-flex font-semibold text-blue-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -54,7 +54,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <p class="py-5 p-5">비로그인</p>
+              <p class="p-5 py-5">비로그인</p>
             </button>
           </RouterLink>
         </div>
@@ -63,10 +63,10 @@
   </div>
 
   <div class="text-center">
-    <p class="text-blue-900 font-bold text-sm">회원이 아니신가요?</p>
+    <p class="text-sm font-bold text-blue-900">회원이 아니신가요?</p>
     <button
       @click="ToJoinview()"
-      class="border-2 bg-blue-900 text-white font-bold px-10 py-3 text-sm rounded-sm"
+      class="px-10 py-3 text-sm font-bold text-white bg-blue-900 border-2 rounded-sm"
     >
       회원가입 페이지로이동하기
     </button>
