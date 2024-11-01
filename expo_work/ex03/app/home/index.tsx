@@ -1,10 +1,9 @@
-import { Text, View } from "react-native-reanimated/lib/typescript/Animated";
+import { Text, View } from "react-native";
 
-export default function(){
-    return(
-        <View>
-            <Text>Home/Index</Text>
-        </View>
-    )
+export default function HOMEIndex(){
+  return (
+    <View>
+      <Text>Home/Index</Text>
+    </View>
+  )
 }
-
