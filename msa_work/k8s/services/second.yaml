@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment # what to create?
+metadata:
+  name: second-service-deployment
+spec: # specification for deployment resource
+  replicas: 1 # how many replicas of pods we want to create
+  selector:
+    matchLabels:
+      app: second-service # 쿠버네티스 안에서 변수명
+  template: # blueprint for pods
+    metadata:
+      labels:
+        app: second-service # 서비스안에서 찾는 변수명
+    spec: # specification for pods
+      containers:
+        - name: second-service
+          image: finnnnnn/second-service:msa.k8.02 #dockerhub에 있는 이미지. 도커를 여러개 돌리는게 쿠버네티스다
+          ports:
+            - containerPort: 40002 #default one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: second-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 40002
+      targetPort: 40002
+  selector:
+    app: second-service

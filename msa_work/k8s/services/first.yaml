@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment # what to create?
+metadata:
+  name: first-service-deployment
+spec: # specification for deployment resource
+  replicas: 1 # how many replicas of pods we want to create
+  selector:
+    matchLabels:
+      app: first-service # 쿠버네티스 안에서 변수명
+  template: # blueprint for pods
+    metadata:
+      labels:
+        app: first-service # 서비스안에서 찾는 변수명
+    spec: # specification for pods
+      containers:
+        - name: first-service
+          image: finnnnnn/first-service:k8.0.1 #dockerhub에 있는 이미지. 도커를 여러개 돌리는게 쿠버네티스다
+          ports:
+            - containerPort: 40001 #default one
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 40001
+      targetPort: 40001
+  selector:
+    app: first-service
