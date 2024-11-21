@@ -14,7 +14,7 @@ spec: # specification for deployment resource
     spec: # specification for pods
       containers:
         - name: second-service
-          image: finnnnnn/second-service:msa.k8.02 #dockerhub에 있는 이미지. 도커를 여러개 돌리는게 쿠버네티스다
+          image: finnnnnn/second-service:msa.k8.0.2 #dockerhub에 있는 이미지. 도커를 여러개 돌리는게 쿠버네티스다
           ports:
             - containerPort: 40002 #default one
 ---

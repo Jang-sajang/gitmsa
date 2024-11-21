@@ -1,0 +1,6 @@
+#이미지 삭제
+docker rmi finnnnnn/user-service:k8.0.1
+#이미지 생성
+docker build -t finnnnnn/user-service:k8.0.1 .
+#이미지 dockerhub 업로드 명령어
+docker push finnnnnn/user-service:k8.0.1
