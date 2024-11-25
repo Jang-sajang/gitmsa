@@ -62,13 +62,13 @@ public class UserSerivceImpl implements UserService{
         return loginResponse;
     }
 
+    @Override
     public List<UserResponse> list(){
         List<UserEntity> list = userRepository.findAll();
         List<UserResponse> userResponses = new ArrayList<>();
         list.forEach(
-                userEntity -> {
-                    userResponses.add(new ModelMapper().map(userEntity,UserResponse.class));
-    });
+            userEntity -> userResponses.add(new ModelMapper().map(userEntity,UserResponse.class))
+        );
         return userResponses;
     }
 }
