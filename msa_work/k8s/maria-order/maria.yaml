@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment # pod 여러개
 metadata:
-  name: user-service-deployment
+  name: order-service-deployment
 spec: # 어떻게 만들지 대한 내용
   replicas: 1 # 몇개의 pod 만들래?
   selector:
     matchLabels:
-      app: user-service # 쿠버네티스 안에서 변수명
+      app: order-service # 쿠버네티스 안에서 변수명
   template:
     metadata:
       labels:
-        app: user-service # 서비스에서 찾는 변수명
+        app: order-service # 서비스에서 찾는 변수명
     spec: # pod 하나하나에 대한 내용
       containers:
-        - name: user-service
+        - name: order-service
           image: finnnnnn/user-service:msa.k8.01  # dockerhub 에 있는 image
           ports:
             - containerPort: 40003 #default one
@@ -41,11 +41,11 @@ spec: # 어떻게 만들지 대한 내용
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-service
+  name: orderorder-service
 spec:
   type: LoadBalancer
   ports:
     - port: 40003
       targetPort: 40003
   selector:
-    app: user-service
+    app: order-service
