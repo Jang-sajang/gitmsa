@@ -17,7 +17,7 @@ data:
   order-service-port: "40004"
   catalog-service-port: "40005"
 
-  spring-datasource-user: "jdbc:mariadb://mariadb-user:3306/msa"
-  spring-datasource-order: "jdbc:mariadb://mariadb-order:3306/msa"
-  spring-datasource-catalog: "jdbc:mariadb://mariadb-catalog:3306/msa"
+  spring-datasource-url-user: "jdbc:mariadb://mariadb-user:3306/msa"
+  spring-datasource-url-order: "jdbc:mariadb://mariadb-order:3306/msa"
+  spring-datasource-url-catalog: "jdbc:mariadb://mariadb-catalog:3306/msa"
   spring-datasource-username: "root"

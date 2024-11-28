@@ -14,7 +14,7 @@ spec: # 어떻게 만들지 대한 내용
     spec: # pod 하나하나에 대한 내용
       containers:
         - name: ucatalogservice
-          image: finnnnnn/catalog-service:k8.0.1  # dockerhub 에 있는 image
+          image: parkmyounghoi/catalog-service:k8.0.1  # dockerhub 에 있는 image
           ports:
             - containerPort: 5000 #default one
           env:
