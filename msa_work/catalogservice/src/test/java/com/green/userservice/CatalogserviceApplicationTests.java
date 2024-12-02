@@ -1,10 +1,10 @@
-package com.green.secondservice;
+package com.green.userservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SecondServiceApplicationTests {
+class CatalogserviceApplicationTests {
 
 	@Test
 	void contextLoads() {

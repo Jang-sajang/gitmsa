@@ -28,7 +28,6 @@ ext {
 }
 
 dependencies {
-	// actuator 환경설정 새로고침
 	implementation 'org.springframework.boot:spring-boot-starter-actuator' // 메트릭 자동생성
 	implementation 'io.micrometer:micrometer-core' // 메트릭 생성 라이브러리
 	implementation 'io.micrometer:micrometer-registry-prometheus' // 프로메테우스에서 메트릭 자동으로..
@@ -62,11 +61,9 @@ dependencies {
 	implementation 'org.modelmapper:modelmapper:3.2.0'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
 
-	implementation 'org.jsoup:jsoup:1.15.4'
+	// kafka 라이브러리 추가..
+	implementation 'org.springframework.kafka:spring-kafka'
 
-	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
-	implementation 'io.jsonwebtoken:jjwt-impl:0.12.3'
-	implementation 'io.jsonwebtoken:jjwt-jackson:0.12.3'
 }
 
 dependencyManagement {
