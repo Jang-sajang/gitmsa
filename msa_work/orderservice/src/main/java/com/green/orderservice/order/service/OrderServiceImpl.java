@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
         orderEntity.setTotalPrice(orderRequest.getUnitPrice() * orderRequest.getQty());
         OrderEntity dbOrderEntity = orderRepository.save(orderEntity);
 
-        // kafka 메시지 저장
+        // kafka 메시지 저장 producer...
         String myTopic = environment.getProperty("spring.kafka.topic-name");
         kafkaProducer.sendMesaage(myTopic,orderEntity);
 
@@ -48,8 +48,8 @@ public class OrderServiceImpl implements OrderService {
                 = orderRepository.findAllByUserId(userId);
         List<OrderResponse> orderResponses = new ArrayList<OrderResponse>();
         orderEntities.stream().forEach(orderEntity ->
-                        orderResponses.add(new ModelMapper().map(orderEntity, OrderResponse.class))
-                );
+                orderResponses.add(new ModelMapper().map(orderEntity, OrderResponse.class))
+        );
         return orderResponses;
     }
 }
