@@ -23,8 +23,8 @@
         </button>
         <!-- 토글 알림 창-->
         <div
-          v-if="showNotifications"
-          class="absolute top-32 mt-2 right-10 w-80 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-all transform origin-top duration-300 ease-in-out"
+          v-show="showNotifications"
+          class="absolute top-28 mt-2 left-20 w-60 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-all transform origin-top duration-300 ease-in-out"
           :class="{ 'scale-y-100 ': showNotifications, 'scale-y-0': !showNotifications }"
         >
           <ul class="divide-y divide-gray-200">
@@ -50,11 +50,15 @@
     class="fixed bg-white w-52 h-full z-50 transform transition-transform duration-300 ease-in-out"
     :class="{ '-translate-x-full': isSideBar, 'translate-x-0': !isSideBar }"
   >
-    <ul>
+    <ul class="space-y-4">
       <li>내 출결 관리</li>
+      <hr />
       <li>휴가 신청</li>
+      <hr />
       <li>과정 선택</li>
+      <hr />
       <li>마이페이지</li>
+      <hr />
       <li>공지사항</li>
     </ul>
   </div>

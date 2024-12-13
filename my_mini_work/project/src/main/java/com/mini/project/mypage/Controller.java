@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
-    @GetMapping("WH/selectall")
+    private final Repository repository;
+
+    @GetMapping("users/selectall")
     public String selectall(){
         return "selectall";
     }
