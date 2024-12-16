@@ -1,14 +1,12 @@
-package com.mini.project.mypage;
+package com.project.mypage.user;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Controller {
+public class UserController {
 
-    private final Repository repository;
-
-    @GetMapping("users/selectall")
+    @GetMapping("selectall")
     public String selectall(){
         return "selectall";
     }
