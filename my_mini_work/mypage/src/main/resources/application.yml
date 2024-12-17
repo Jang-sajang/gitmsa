@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/WH?useSSL=false&serverTimezone=Asia/seoul&characterEncoding=UTF-8
+    url: jdbc:mariadb://localhost:3306/WH?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/seoul&characterEncoding=UTF-8
     username: root
     password: 1234
 
@@ -12,8 +12,9 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
         format_sql: true
     defer-datasource-initialization: true
