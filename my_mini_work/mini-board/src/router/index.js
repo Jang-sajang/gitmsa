@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import QuestionBoard from '@/views/QuestionBoard.vue'
-import MyPage from '@/views/mobile/MyPage.vue'
+import MobileMyPage from '@/views/mobile/MobileMyPage.vue'
 import LabVue from '@/components/LabVue.vue'
+import WebMyPage from '@/views/WebMyPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,12 +21,17 @@ const router = createRouter({
     {
       path: '/mypage',
       name: 'mypage',
-      component: MyPage,
+      component: MobileMyPage,
     },
     {
       path: '/labvue',
       name: 'labvue',
       component: LabVue,
+    },
+    {
+      path: '/webmypage',
+      name: 'webmypage',
+      component: WebMyPage,
     },
   ],
 })
