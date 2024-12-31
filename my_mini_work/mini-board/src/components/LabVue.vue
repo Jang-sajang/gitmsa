@@ -3,7 +3,7 @@
     <!-- Toggle Button -->
     <button
       @click="toggleSidebar"
-      class="fixed top-4 left-4 z-50 p-2 text-white bg-blue-600 rounded-md shadow-md focus:outline-none md:hidden"
+      class="fixed top-4 left-4 z-30 p-2 text-white bg-blue-600 rounded-md shadow-md focus:outline-none md:hidden"
     >
       <span v-if="!isSidebarOpen">\u2630</span>
       <!-- Menu icon -->
