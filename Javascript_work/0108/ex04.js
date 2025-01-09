@@ -7,8 +7,8 @@ const person = {
     gender : "남자"
 }
 
-function fuc({person,name,gender}){
-console.log(`나이는 ${person.age}`);
+function fuc({age,name,gender}){
+console.log(`나이는 ${age}`);
 console.log(`이름은 ${name}`);
 console.log(`성별은 ${gender}`);
 }
